@@ -1,0 +1,58 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title">
+                <strong>تعديل بطاقة</strong>
+            </div>
+        </div>
+        <div class="modal-body">
+
+            <input type="hidden" id="EmpCardEntity" value="@ViewBag.EmpCardEntity" />
+            <input type="hidden" id="CardTypes" value="@ViewBag.CardTypes" />
+            <div class="row">
+                <div class="col-md-10">
+
+                    <form class="form-horizontal">
+                        <input type="hidden" ng-model="EmpCard.ID" />
+                        <input type="hidden" ng-model="EmpCard.EmpID" />
+
+                        <div class="row">
+                            <label class="col-md-3"> نوع البطاقة </label>
+                            <select class="col-md-6 form-control selectpicker" data-live-search="true" ng-options="x.ID as x.Name for x in CardTypes" ng-model="EmpCard.CardTypeID"></select>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="col-md-3"> رقم البطاقة </label>
+                            <input type="text" class="form-control col-md-6" ng-model="EmpCard.IdentityNumber" />
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="col-md-3"> ملاحظات </label>
+                            <input type="text" class="form-control col-md-6" ng-model="EmpCard.Note" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-2">
+                    <div style="margin-right:-100px;">
+                        <div id="ImageCon">
+                            <img height="150px" width="150px" src="~/UploadImages/default.jpg" />
+                        </div>
+                        <label class="btn btn-danger col-md-5 glyphicon glyphicon-remove" ng-click="DeleteImage()"></label>
+                        <input type="file" id="Cardimage"  style="display:none;" />
+                        <label class="btn btn-primary col-md-6 glyphicon glyphicon-arrow-up" ng-click="UploadCard()"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-primary" ng-click="EditEmpCardsEnd()">حفظ</label>
+        </div>
+
+    </div>
+</div>

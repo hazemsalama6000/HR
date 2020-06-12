@@ -1,0 +1,56 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        
+        <div class="modal-header">
+            <div class="modal-title">اضافة سفرية او مأمورية</div>
+        </div>
+
+        <div class="modal-body">
+
+            <form class="form-horizontal">
+               
+                <input type="hidden" ng-model="Mission.ID" />
+                <input type="hidden" ng-model="Mission.EmpID" />
+                
+                <div class="row">
+                    <label class="col-md-2">سفرية</label>
+                    <div class="col-md-2"><input type="radio"  value="true" ng-model="Mission.MissionOrTravel"/></div>
+                    <div class="col-md-2"></div>
+                    <label class="col-md-2">مأمورية</label>
+                    <div class="col-md-2"><input type="radio" value="false" ng-model="Mission.MissionOrTravel" /></div>
+                </div>
+                
+                <br />
+                
+                <div class="row">
+                    <label class="col-md-2">من تاريخ</label>
+                    <div class="col-md-4"> <input type="date" class="form-control" ng-model="Mission.fromDate"></div>
+
+                    <label class="col-md-2">الي تاريخ</label>
+                    <div class="col-md-4"><input type="date" class="form-control" ng-model="Mission.toDate"></div>
+                </div>
+                
+                <br />
+
+                <div class="row">
+                    <label class="col-md-2">ملاحظات</label>
+                    <div class="col-md-10"> <textarea class="form-control" ng-model="Mission.Note"></textarea> </div>
+                </div>
+
+            </form>
+
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-primary" ng-click="AddMissionEnd()">حفظ</label>
+        </div>
+
+    </div>
+</div>

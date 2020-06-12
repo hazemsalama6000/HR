@@ -1,0 +1,53 @@
+﻿@{ Layout = null; }
+
+
+<div class="row">
+
+    <input type="hidden" id="EmpSalaryInfoViewBag" value="@ViewBag.EmpSalaryInfo" />
+
+    <form class="form-horizontal">
+
+        <input type="hidden" ng-model="EmpSalaryInfo.ID" />
+
+        <div class="row">
+            <label class="control-label col-md-2"> راتب التعيين </label>
+            <input class="col-md-2 form-control" ng-model="EmpSalaryInfo.HireSalary" />
+
+            <label class="control-label col-md-2"> الراتب الاساسي </label>
+            <input class="col-md-2 form-control" ng-disabled="true" ng-model="EmpSalaryInfo.BasicSalary" />
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2"></div>
+            <label class="col-md-4">
+                مؤمن
+                <input type="checkbox"  ng-value="true" ng-model="EmpSalaryInfo.Insured" />
+            </label>
+            <label class="col-md-6">
+                خاضع للضريبة
+                <input type="checkbox" ng-value="true" ng-model="EmpSalaryInfo.Taxed" />
+            </label>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-5">  </div>
+                <label class="btn btn-danger col-md-3" ng-click="SaveEmpSalaryInfo()">حفظ</label>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

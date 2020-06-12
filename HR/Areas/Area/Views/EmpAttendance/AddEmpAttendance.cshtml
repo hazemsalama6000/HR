@@ -1,0 +1,45 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header"> <div class="modal-title"> اضافة حضور وانصراف </div> </div>
+
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="AttendanceTypeID" value="@ViewBag.AttendanceType" />
+
+                <input type="hidden" ng-model="EmpAttendance.EmpID" />
+
+                <div class="row">
+                    <label class="control-label col-md-2"> تاريخ </label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpAttendance.DateAdded"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> الحركة </label>
+                    <select data-live-search="true" class="form-control col-md-8 selectpicker" ng-options="x.ID as x.Name for x in AttendanceType" ng-model="EmpAttendance.AttenID"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> من </label>
+                    <input type="time" class="form-control col-md-3" ng-model="EmpAttendance.TimeFrom" />
+                    <label class="control-label col-md-2"> من </label>
+                    <input type="time" class="form-control col-md-3" ng-model="EmpAttendance.TimeTo" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> ملاحظات </label>
+                    <textarea class="form-control col-md-8" ng-model="EmpAttendance.Note"></textarea>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddEmpAttendanceEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

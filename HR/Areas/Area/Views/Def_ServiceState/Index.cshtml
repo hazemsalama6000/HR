@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin:auto 0px">
+    <div class="col-md-12">
+
+        <input type="hidden" id="Def_ServiceStateViewBag" value="@ViewBag.Def_ServiceStateViewBag" />
+
+
+        <div  ng-controller="Def_ServiceStateController">
+
+            <div class="panel panel-default">
+
+                <div class="panel panel-heading">
+                    <div class="panel-title text-center" ><strong>تعريف  الحالة الوظيفية  </strong> </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="btn btn-danger col-md-3" ng-click="AddDef_ServiceState()"> تعريف الحالة الوظيفية </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-bordered table-hover table-responsive table-striped">
+                                <tr>
+                                    <th class="text-center">الحالة الوظيفية</th>
+                                </tr>
+
+                                <tr ng-repeat="x in Def_ServiceStates">
+                                    <td>{{x.Name}} </td>
+                                    <td>
+                                        <label class="btn btn-success" ng-click="EditDef_ServiceState(x.ID)"> تعديل </label>
+                                        <label class="btn btn-danger" ng-click="DeleteDef_ServiceState(x.ID)"> حذف </label>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+
+    var app = angular.module("Hr", []);
+    app.controller("Def_ServiceStateController", function ($scope, $http,$compile, $filter) {
+
+        $scope.Def_ServiceStates = angular.fromJson($("#Def_ServiceStateViewBag").val());
+
+        $scope.DeleteDef_ServiceState = function (ID) {
+            $http.get("/Area/Def_ServiceState/DeleteDef_ServiceState?ID="+ID).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_ServiceStates = angular.fromJson(res.data.Def_ServiceStateList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.AddDef_ServiceState = function () {
+            $scope.Def_ServiceState = {};
+            $http.get("/Area/Def_ServiceState/AddDef_ServiceState").then(function (res) {
+                $("#myModal").empty();
+                $el =  $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddDef_ServiceStateEnd = function () {
+
+            $http.post("/Area/Def_ServiceState/AddDef_ServiceStateEnd", $scope.Def_ServiceState).then(function (res) {
+                if(res.data.action=="yes"){
+                    $scope.Def_ServiceStates = angular.fromJson(res.data.Def_ServiceStateList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.EditDef_ServiceState = function (ID) {
+            $scope.Def_ServiceState = {};
+            $http.get("/Area/Def_ServiceState/EditDef_ServiceState?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.Def_ServiceState = angular.fromJson($("#Def_ServiceStateBag").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditDef_ServiceStateEnd = function () {
+
+            $http.post("/Area/Def_ServiceState/EditDef_ServiceStateEnd", $scope.Def_ServiceState).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_ServiceStates = angular.fromJson(res.data.Def_ServiceStateList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

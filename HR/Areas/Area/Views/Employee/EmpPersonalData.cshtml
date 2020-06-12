@@ -1,0 +1,48 @@
+﻿@{ Layout = null;}
+
+<div class="row">
+        <form class="form-horizontal">
+            <div class="row">
+                <label class="control-label col-md-2">تاريخ الميلاد</label>
+                <div class="col-md-3"><input type="date" class="form-control" ng-model="Employee.BithDate" /></div>
+
+                <label class="control-label col-md-2">الجنسية</label>
+                <div class="col-md-3">
+                    <select data-live-search="true" ng-options="x.ID as x.Name for x in Nationalities" ng-model="Employee.NationalityID" class="form-control selectpicker"></select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-2"> الخدمة العسكرية </label>
+                <div class="col-md-3"><select data-live-search="true" class="form-control selectpicker" ng-options="x.ID as x.Name for x in MilitaryService" ng-model="Employee.MilitaryServiceID"></select> </div>
+
+                <label class="control-label col-md-2">الحالة الاجتماعية</label>
+                <div class="col-md-3"> <select data-live-search="true" class="form-control selectpicker" ng-options="x.ID as x.Name for x in Maritalstatus" ng-model="Employee.MaritalStateID"></select> </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-2">الديانة</label>
+                <div class="col-md-3"><select data-live-search="true" class="form-control selectpicker" ng-options="x.ID as x.Name for x in Religion" ng-model="Employee.ReligionID"></select></div>
+
+                <label class="control-label col-md-2"> النوع </label>
+                <div class="col-md-3"><select data-live-search="true" class="form-control selectpicker" ng-options="x.ID as x.Name for x in Gender" ng-model="Employee.GenderID"></select> </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <label class="control-label col-md-2">التليفون</label>
+                <div class="col-md-8"><input type="text" class="form-control" ng-model="Employee.Telephone"/></div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-2">العنوان</label>
+               <div class="col-md-8"> <input type="text" class="form-control" ng-model="Employee.AddressLocation" /> </div> 
+            </div>
+            <br />
+            
+            <div class="row">
+                <div class="btn btn-danger col-md-3 glyphicon glyphicon-plus" style="margin-right:300px;" ng-click="new()"> <strong>  جديد </strong> </div>
+                <div class="btn btn-default col-md-3 glyphicon glyphicon-saved" ng-click="save()"><strong>  حفظ </strong> </div>
+            </div>
+        </form>
+</div>

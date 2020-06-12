@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b744cfe7d2434704afd9d9765de5844d" Name="Diagram1">
+        <EntityTypeShape EntityType="HRModel.Conf_Menu" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="HRModel.Conf_SubMenu" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="HRModel.Conf_SubsubMenu" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="HRModel.Def_AllowanceTypes" Width="1.5" PointX="3" PointY="17.625" />
+        <EntityTypeShape EntityType="HRModel.Def_Attendance" Width="1.5" PointX="9" PointY="30.75" />
+        <EntityTypeShape EntityType="HRModel.Def_CardType" Width="1.5" PointX="3" PointY="29.75" />
+        <EntityTypeShape EntityType="HRModel.Def_Degree" Width="1.5" PointX="0.75" PointY="36.625" />
+        <EntityTypeShape EntityType="HRModel.Def_ElawaTypes" Width="1.5" PointX="6" PointY="31.25" />
+        <EntityTypeShape EntityType="HRModel.Def_Gender" Width="1.5" PointX="0.75" PointY="18.875" />
+        <EntityTypeShape EntityType="HRModel.Def_Jobs" Width="1.5" PointX="0.75" PointY="23.5" />
+        <EntityTypeShape EntityType="HRModel.Def_MaritalStatus" Width="1.5" PointX="0.75" PointY="32" />
+        <EntityTypeShape EntityType="HRModel.Def_MilitaryService" Width="1.5" PointX="0.75" PointY="16.5" />
+        <EntityTypeShape EntityType="HRModel.Def_Nationality" Width="1.5" PointX="0.75" PointY="34.25" />
+        <EntityTypeShape EntityType="HRModel.Def_Penalty" Width="1.5" PointX="9" PointY="33.625" />
+        <EntityTypeShape EntityType="HRModel.Def_QualificationTypes" Width="1.5" PointX="9" PointY="16.75" />
+        <EntityTypeShape EntityType="HRModel.Def_Religion" Width="1.5" PointX="0.75" PointY="29.625" />
+        <EntityTypeShape EntityType="HRModel.Def_RewardTypes" Width="1.5" PointX="6" PointY="15.5" />
+        <EntityTypeShape EntityType="HRModel.Def_ServiceState" Width="1.5" PointX="0.75" PointY="27.25" />
+        <EntityTypeShape EntityType="HRModel.Def_Users" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HRModel.EmpAllowance" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="HRModel.EmpAttendance" Width="1.5" PointX="11.25" PointY="23.25" />
+        <EntityTypeShape EntityType="HRModel.EmpBorrow" Width="1.5" PointX="5.25" PointY="48.25" />
+        <EntityTypeShape EntityType="HRModel.EmpCards" Width="1.5" PointX="5.25" PointY="27.375" />
+        <EntityTypeShape EntityType="HRModel.EmpElawa" Width="1.5" PointX="8.25" PointY="27.25" />
+        <EntityTypeShape EntityType="HRModel.EmpJobs" Width="1.5" PointX="8.25" PointY="23.25" />
+        <EntityTypeShape EntityType="HRModel.EmpLeaveEarly" Width="1.5" PointX="5.25" PointY="45.25" />
+        <EntityTypeShape EntityType="HRModel.Employee" Width="1.5" PointX="3" PointY="20.375" />
+        <EntityTypeShape EntityType="HRModel.EmpPenalty" Width="1.5" PointX="11.25" PointY="27.25" />
+        <EntityTypeShape EntityType="HRModel.EmpPromotions" Width="1.5" PointX="5.25" PointY="22.875" />
+        <EntityTypeShape EntityType="HRModel.EmpQualification" Width="1.5" PointX="11.25" PointY="19.25" />
+        <EntityTypeShape EntityType="HRModel.EmpRewards" Width="1.5" PointX="8.25" PointY="19.25" />
+        <EntityTypeShape EntityType="HRModel.EmpSalaryInfo" Width="1.5" PointX="5.25" PointY="51.75" />
+        <EntityTypeShape EntityType="HRModel.Mission" Width="1.5" PointX="5.25" PointY="42.125" />
+        <AssociationConnector Association="HRModel.FK__Conf_SubM__MenuI__47DBAE45" />
+        <AssociationConnector Association="HRModel.FK__Conf_Subs__SubMe__48CFD27E" />
+        <AssociationConnector Association="HRModel.FK__EmpAllowa__Allow__49C3F6B7" />
+        <AssociationConnector Association="HRModel.FK_EmpAttendance_Def_Attendance" />
+        <AssociationConnector Association="HRModel.FK__EmpCards__CardTy__4D94879B" />
+        <AssociationConnector Association="HRModel.FK__EmpPromot__Degre__5CD6CB2B" />
+        <AssociationConnector Association="HRModel.FK__EmpPromot__Degre__5DCAEF64" />
+        <AssociationConnector Association="HRModel.FK_Employee_Degree" />
+        <AssociationConnector Association="HRModel.FK__EmpElawa__ElawaI__4F7CD00D" />
+        <AssociationConnector Association="HRModel.FK_Employee_Gender" />
+        <AssociationConnector Association="HRModel.FK__EmpJobs__JobID__52593CB8" />
+        <AssociationConnector Association="HRModel.FK__EmpPromot__JobCu__5FB337D6" />
+        <AssociationConnector Association="HRModel.FK__EmpPromot__JobLa__60A75C0F" />
+        <AssociationConnector Association="HRModel.FK_Employee_Jobs" />
+        <AssociationConnector Association="HRModel.FK_Employee_MaritalStatus" />
+        <AssociationConnector Association="HRModel.FK_Employee_MilitaryService" />
+        <AssociationConnector Association="HRModel.FK_Employee_Nationality" />
+        <AssociationConnector Association="HRModel.FK__EmpPenalt__PenID__5BE2A6F2" />
+        <AssociationConnector Association="HRModel.FK__EmpQualif__QualI__628FA481" />
+        <AssociationConnector Association="HRModel.FK_Employee_Religion" />
+        <AssociationConnector Association="HRModel.FK__EmpReward__Rewar__6477ECF3" />
+        <AssociationConnector Association="HRModel.FK_Employee_ServiceState" />
+        <AssociationConnector Association="HRModel.FK__EmpAllowa__EmpID__4AB81AF0" />
+        <AssociationConnector Association="HRModel.FK_EmpAttendance_Employee" />
+        <AssociationConnector Association="HRModel.FK__EmpBorrow__EmpID__02FC7413" />
+        <AssociationConnector Association="HRModel.FK__EmpCards__EmpID__4E88ABD4" />
+        <AssociationConnector Association="HRModel.FK__EmpElawa__EmpID__5070F446" />
+        <AssociationConnector Association="HRModel.FK__EmpJobs__EmpID__5165187F" />
+        <AssociationConnector Association="HRModel.FK__Emp__EmpID__6FE99F9F" />
+        <AssociationConnector Association="HRModel.FK__EmpPenalt__EmpID__5AEE82B9" />
+        <AssociationConnector Association="HRModel.FK__EmpPromot__EmpID__5EBF139D" />
+        <AssociationConnector Association="HRModel.FK__EmpQualif__EmpID__4BAC3F29" />
+        <AssociationConnector Association="HRModel.FK__EmpReward__EmpID__6383C8BA" />
+        <AssociationConnector Association="HRModel.FK__EmpSalary__EmpID__656C112C" />
+        <AssociationConnector Association="HRModel.FK__Mission__EmpID__66603565" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

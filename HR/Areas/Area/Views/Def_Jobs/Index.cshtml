@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style="margin:auto 0px">
+    <div class="col-md-12">
+
+        <div ng-controller="Def_JobsController">
+
+            <input id="Def_Jobs" type="hidden" value="@ViewBag.Def_JobsViewbag" />
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title text-center"><strong>تعريف الوظائف </strong> </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                          <label class="btn btn-danger col-md-2" ng-click="AddDef_Jobs()"> تعريف وظيفة </label>
+                        </div> 
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover table-striped">
+                                <tr>
+                                    <th> الوظيفة </th>
+                                </tr>
+                                <tr ng-repeat="x in Def_Jobs">
+                                    <td>{{x.Name}}</td>
+                                    <td>
+                                        <label class="btn btn-primary" ng-click="EditDef_Jobs(x.ID)"> تعديل </label>
+                                        <label class="btn btn-danger" ng-click="DeleteDef_Jobs(x.ID)"> حذف </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    var app = angular.module("Hr", []);
+    app.controller("Def_JobsController", function ($scope, $http, $compile, $filter) {
+
+        $scope.Def_Jobs = angular.fromJson($("#Def_Jobs").val());
+
+        $scope.DeleteDef_Jobs = function (ID) {
+            $http.get("/Area/Def_Jobs/DeleteDef_Jobs?ID=" + ID).then(function (res) {
+
+                if (res.data.action == "yes") {
+                    $scope.Def_Jobs = angular.fromJson(res.data.Def_JobsList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                     }
+
+            });
+
+        }
+
+        $scope.AddDef_Jobs = function () {
+            $scope.Def_Job = {};
+            $http.get("/Area/Def_Jobs/AddDef_Jobs").then(function (res) {
+                $("#myModal").empty();
+                $el= $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal();
+            });
+        }
+
+
+        $scope.AddDef_JobsEnd = function () {
+            $http.post("/Area/Def_Jobs/AddDef_JobsEnd", $scope.Def_Job).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Jobs = angular.fromJson(res.data.Def_JobsList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.EditDef_Jobs = function (ID) {
+            $scope.Def_Job = {};
+            $http.get("/Area/Def_Jobs/EditDef_Jobs?ID=" + ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.Def_Job = angular.fromJson($("#Def_JobsViewBag").val());
+                $("#myModal").modal();
+            });
+        }
+
+        $scope.EditDef_JobsEnd = function () {
+            $http.post("/Area/Def_Jobs/EditDef_JobsEnd", $scope.Def_Job).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Jobs = angular.fromJson(res.data.Def_JobsList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+
+            });
+
+        }
+
+
+
+
+
+
+    });
+
+</script>
+
+

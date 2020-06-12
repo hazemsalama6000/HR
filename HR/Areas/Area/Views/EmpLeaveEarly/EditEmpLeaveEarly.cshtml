@@ -1,0 +1,43 @@
+﻿
+@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"> اضافة اذن </div>
+        </div>
+        <div class="modal-body">
+
+            <input  type="hidden" id="EmpLeaveEarlyID" value="@ViewBag.EmpLeaveEarly" />
+            <form class="form-horizontal">
+                <input type="hidden" ng-model="EmpLeaveEarly.ID" />
+
+                <div class="row">
+                    <label class="control-label col-md-2"> التاريخ </label>
+                    <input type="date" class="col-md-8 form-control" ng-model="EmpLeaveEarly.DateDay" />
+                </div>
+                <br />
+
+                <div class="row">
+                    <label class="control-label col-md-2"> من </label>
+                    <input type="time" class="col-md-3 form-control" ng-model="EmpLeaveEarly.FromTime" />
+                    <label class="control-label col-md-2"> الي </label>
+                    <input type="time" class="col-md-3 form-control" ng-model="EmpLeaveEarly.ToTime" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> السبب </label>
+                    <textarea class="col-md-8 form-control" ng-model="EmpLeaveEarly.reason"></textarea>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="EditEmpLeaveEarlyEnd()">حفظ</label>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿
+@{ Layout = null;}
+
+
+<input type="hidden" id="Jobs" value="@ViewBag.Jobs" />
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpJobs()"> <strong>اضافة عمل مسند</strong> <span class="glyphicon glyphicon-plus"></span></label>
+</div>
+
+<hr />
+
+<div class="row">
+
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th class="text-center">الوظيفة</th>
+            <th class="text-center">من</th>
+            <th class="text-center">الي</th>
+            <th class="text-center">ملاحظة</th>
+            <th class="text-center"> وظيفة اساسية </th>
+            <th class="text-center">الاتاحة</th>
+        </tr>
+
+        <tr ng-repeat="x in Jobs">
+            <td>{{x.JobName}}</td>
+            <td>{{x.fromDate|date:'dd-MM-yyyy'}}</td>
+            <td>{{ x.toDate|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.Note}}</td>
+
+            <td ng-if="x.MasterJobFlag==true" style="text-align:center;">
+               <label class="glyphicon glyphicon-ok"></label>
+            </td>
+            <td ng-if="x.MasterJobFlag==false||x.MasterJobFlag==null" style="text-align:center;">
+                <label class="glyphicon glyphicon-remove"></label>
+            </td>
+
+            <td ng-if="useDate(x.toDate)==true||x.toDate==null||x.MasterJobFlag==true" class="center-block">
+                 <label style="margin-right:30%;" class="btn-primary col-md-4 text-center"> <strong>متاح</strong></label>
+            </td>
+
+            <td ng-if="useDate(x.toDate)==false&&x.toDate!=null && (x.MasterJobFlag==false||x.MasterJobFlag==null)" align="center">
+                <label style="margin-right:30%;"  class="btn-danger col-md-4 text-center"><strong class="text-center"> غير متاح</strong> </label>
+            </td>
+
+            <td ng-if="x.MasterJobFlag==false||x.MasterJobFlag==null">
+                <label class="btn btn-success" ng-click="EditEmpJobs(x.ID)">تعديل</label>
+                <label class="btn btn-danger" ng-click="DeleteJob(x.ID)">حذف</label>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

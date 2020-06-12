@@ -1,0 +1,67 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header"><div class="modal-title">اضافة سلفة</div></div>
+
+        <div class="modal-body">
+
+            <form class="form-horizontal">
+
+                <div class="row">
+                    <label class="control-label col-md-2">تاريخ السلفة</label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpBorrow.Dateorder"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2">تاريخ بداية السداد</label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpBorrow.payoffDate" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2">قيمة السلفة</label>
+                    <input type="text" class="form-control col-md-8" ng-model="EmpBorrow.BorrowVal" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2">قيمة القسط</label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpBorrow.Installmentscount" ng-model="EmpBorrow.InstallmentVal" />
+                    <label class="control-label col-md-2">عدد الاقساط</label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpBorrow.InstallmentVal" ng-model="EmpBorrow.Installmentscount" />
+                </div>
+                <br />
+                <div class="row">
+                     <label class="control-label col-md-2">المسدد</label>
+                     <input type="text" class="form-control col-md-8" ng-model="EmpBorrow.payoffValue" />
+                </div>
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <label class="btn btn-danger" ng-click="AddEmpBorrowEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

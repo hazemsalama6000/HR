@@ -1,0 +1,41 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"> اضافة ببدل </div>
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="AllowanceTypes" value="@ViewBag.AllowanceTypes " />
+            <form class="form-horizontal">
+                <div class="row">
+                    <label class="col-md-1 control-label"> بدل </label>
+                    <select data-live-search="true" class="form-control selectpicker col-md-9" ng-change="getAllowanceValue(EmpAllowance.AllowanceTypeID)" ng-options="x.ID as x.Name for x in AllowanceTypes" ng-model="EmpAllowance.AllowanceTypeID"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-1"> من </label>
+                    <input type="date" class="form-control col-md-4" ng-model="EmpAllowance.DateFrom"/>
+                    <label class="col-md-1 control-label"> الي </label>
+                    <input type="date" class="form-control col-md-4" ng-model="EmpAllowance.DateTo" />
+                </div>
+                <br />
+
+                <div class="row">
+                    <label class="control-label col-md-1"> القيمة </label>
+                    <input type="text" class="form-control col-md-9" ng-model="EmpAllowance.Value"/>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddEmpAllowanceEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

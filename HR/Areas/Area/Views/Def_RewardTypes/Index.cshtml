@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin:20px;" ng-controller="Def_RewardTypes">
+  
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <div class="panel-title text-center"> <strong>المكافئات </strong> </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="" style="margin:20px;">
+                    <div class="row">
+                        <label class="btn btn-danger col-md-3" ng-click="AddRewardTypes()"> اضافة المكافئات </label>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <input type="hidden" id="RewardTypesID" value="@ViewBag.RewardTypes" />
+                        <table class="table table-bordered table-hover table-striped">
+                            <tr>
+                                <td>المكافئة</td>
+                                <td>القيمة</td>
+                                <td>القيمة باليوم</td>
+                                <td></td>
+                            </tr>
+                            {{ff}}
+                            <tr ng-repeat="x in RewardTypes">
+                                <td>{{x.Name}}</td>
+                                <td>{{x.Value}}</td>
+                                <td>{{x.DaysNum}}</td>
+                                <td>
+                                    <label class="btn btn-primary" ng-click="EditRewardTypes(x.ID)"> تعديل </label>
+                                    <label class="btn btn-danger" ng-click="DeleteRewardTypes(x.ID)"> حذف </label>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var app = angular.module("Hr", []);
+
+    app.controller("Def_RewardTypes", function ($scope, $http, $compile) {
+        putMenu();
+        $scope.RewardTypes = angular.fromJson($("#RewardTypesID").val());
+
+        $scope.DeleteRewardTypes = function (ID) {
+            $http.get("/Area/Def_RewardTypes/DeleteRewardTypes?ID="+ID).then(function (res) {
+                if (res.data.action == 'yes') {
+                    $scope.RewardTypes = angular.fromJson(res.data.result);
+                    toastr.success("", res.data.msg);
+                }
+                if (res.data.action == 'no')
+                    toastr.error("", res.data.msg);
+            });
+
+        }
+
+        $scope.AddRewardTypes = function () {
+            $scope.RewardType={};
+            $http.get("/Area/Def_RewardTypes/AddRewardTypes").then(function (res) {
+                $("#myModal").empty();
+                $el=$("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddRewardTypesEnd = function () {
+            $http.post("/Area/Def_RewardTypes/AddRewardTypesEnd", $scope.RewardType).then(function (res) {
+                if (res.data.action == 'yes') {
+                    $scope.RewardTypes =angular.fromJson( res.data.result );
+                    toastr.success("", res.data.msg);
+                }
+                if (res.data.action == 'no')
+                toastr.error("", res.data.msg);
+            });
+        }
+
+
+        $scope.EditRewardTypes = function (ID) {
+            
+            $http.get("/Area/Def_RewardTypes/EditRewardTypes?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.RewardType = angular.fromJson($("#RewardTypeID").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditRewardTypesEnd = function () {
+            $http.post("/Area/Def_RewardTypes/EditRewardTypesEnd", $scope.RewardType).then(function (res) {
+                if (res.data.action == 'yes') {
+                    $scope.RewardTypes = angular.fromJson(res.data.result);
+                    toastr.success("", res.data.msg);
+                }
+                if (res.data.action == 'no')
+                    toastr.error("", res.data.msg);
+            });
+        }
+
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+

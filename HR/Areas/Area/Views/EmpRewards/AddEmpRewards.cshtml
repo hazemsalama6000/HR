@@ -1,0 +1,44 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header"> <div class="modal-title">اضافة مكافئات   </div></div>
+
+        <div class="modal-body">
+            
+            <input type="hidden" id="RewardTypesID" value="@ViewBag.RewardTypes" />
+            <form class="form-horizontal">
+                
+                <div class="row">
+                    <label class="control-label col-md-2"> تاريخ </label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpReward.DateAdded"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="col-md-2 control-label"> نوع المكافئة </label>
+                    <select data-live-search="true" class="form-control col-md-8 selectpicker" ng-change="getRewardValue(EmpReward.RewardID)" ng-options="x.ID as x.Name for x in RewardTypes" ng-model="EmpReward.RewardID"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2" > الايام </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpReward.Value" ng-model="EmpReward.DaysNum" />
+                    <label class="control-label col-md-2"> القيمة </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpReward.DaysNum" ng-model="EmpReward.Value" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> ملاحظات </label>
+                    <textarea class="form-control col-md-8" ng-model="EmpReward.Note"></textarea>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddEmpRewardsEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

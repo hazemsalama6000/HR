@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+  
+      @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+    
+
+    @*these scripts for auto Complete with *@
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/rtlbootstrap.css" rel="stylesheet" />
+
+    <link href="~/Scripts/bootstrap-select.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+</head>
+<body ng-app="Hr">
+
+    <div class="row">
+        <div class="col-md-12">
+           
+             <div style="" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container" id="menu">
+         
+                </div>
+            </div>
+
+            <div style="margin-top:80px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+                </div>
+            </div>
+
+        </div>
+
+            @RenderSection("scripts", required: false)
+       
+            @Scripts.Render("~/bundles/bootstrap")
+   
+
+
+</body>
+</html>
+
+
+<script>
+    function putMenu() {
+        $.get("/Menu/Menu/getMenu", function (data) {
+            $("#menu").html(data);
+        });
+    }
+    putMenu();
+
+</script>
+
+

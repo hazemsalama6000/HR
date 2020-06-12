@@ -1,0 +1,40 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"><strong>  اضافة ترقية </strong></div>     
+        </div>
+        
+        <div class="modal-body">
+
+            <form class="form-horizontal">
+                <input type="hidden" ng-model="EmpPromotion.EmpID"/>
+                <div class="row">
+                    <label class="control-label col-md-3"> الدرجة الوظيفية الحالية </label>
+                    <select  data-live-search="true" class="col-md-6 form-control selectpicker" ng-model="EmpPromotion.DegreeCurrent" ng-options="x.ID as x.Name for x in DegreesEmpForm" ></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3"> الوظيفة الحالية </label>
+                    <select data-live-search="true" class="form-control col-md-6 selectpicker" ng-model="EmpPromotion.JobCurrent" ng-options="x.ID as x.Name for x in JobsEmpForm"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3"> الملاحظات </label>
+                    <textarea class="form-control col-md-6"  ng-model="EmpPromotion.Note"></textarea>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-primary" ng-click="AddEmpPromotionsEnd()">حفظ</label>
+        </div>
+
+
+    </div>
+</div>

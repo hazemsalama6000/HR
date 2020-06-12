@@ -1,0 +1,35 @@
+﻿@{ Layout = null;}
+
+<input type="hidden" id="ElawaTypesID" value="@ViewBag.ElawaTypes" />
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <td>تاريخ</td>
+                <td>الاسم</td>
+                <td>النسبه</td>
+                <td>القيمة</td>
+                <td>مضمومة</td>
+                <td>دورية</td>
+                <td>خاضعة للضريبة</td>
+            </tr>
+            <tr ng-repeat="x in ElawaTypes">
+                <td>{{x.DateAdded|date:'yyyy-MM-dd'}}</td>
+                <td>{{x.Name}}</td>
+                <td>{{x.SalaryPercent}}</td>
+                <td>{{x.Value}}</td>
+                <td ng-show="x.Included==true"> <label class="label label-primary">مضمومة</label></td>
+                <td ng-show="x.Included==false||x.Included==null"> <label class="label label-danger">غير مضمومة</label>  </td>
+                <td ng-show="x.Repeated==true"><label class="label label-primary">دورية</label>  </td>
+                <td ng-show="x.Repeated==false||x.Repeated==null"> <label class="label label-danger">غير دورية</label> </td>
+                <td ng-show="x.Taxed==true"> <label class="label label-primary">خاضعة للضريبة</label> </td>
+                <td ng-show="x.Taxed==false||x.Taxed==null"> <label class="label label-danger">غير خاضعة للضريبة</label>  </td>
+                <td>
+                    <label class="btn btn-success" ng-click="EditDef_ElawaTypes(x.ID)"> تعديل </label>
+                    <label class="btn btn-danger" ng-click="DeleteDef_ElawaType(x.ID)"> حذف </label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

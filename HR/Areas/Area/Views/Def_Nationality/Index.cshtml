@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin:auto 0px">
+    <div class="col-md-12">
+
+        <input type="hidden" id="Def_NationalityViewBag" value="@ViewBag.Def_NationalityViewBag" />
+
+
+        <div  ng-controller="Def_NationalityController">
+
+            <div class="panel panel-default">
+
+                <div class="panel panel-heading">
+                    <div class="panel-title text-center" ><strong>تعريف الجنسية  </strong> </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="btn btn-danger col-md-3" ng-click="AddDef_Nationality()"> تعريف الجنسية </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-bordered table-hover table-responsive table-striped">
+                                <tr>
+                                    <th class="text-center"> الجنسية</th>
+                                </tr>
+
+                                <tr ng-repeat="x in Def_Nationalitys">
+                                    <td>{{x.Name}} </td>
+                                    <td>
+                                        <label class="btn btn-success" ng-click="EditDef_Nationality(x.ID)"> تعديل </label>
+                                        <label class="btn btn-danger" ng-click="DeleteDef_Nationality(x.ID)"> حذف </label>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+
+    var app = angular.module("Hr", []);
+    app.controller("Def_NationalityController", function ($scope, $http,$compile, $filter) {
+
+        $scope.Def_Nationalitys = angular.fromJson($("#Def_NationalityViewBag").val());
+
+        $scope.DeleteDef_Nationality = function (ID) {
+            $http.get("/Area/Def_Nationality/DeleteDef_Nationality?ID="+ID).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Nationalitys = angular.fromJson(res.data.Def_NationalityList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.AddDef_Nationality = function () {
+            $scope.Def_Nationality = {};
+            $http.get("/Area/Def_Nationality/AddDef_Nationality").then(function (res) {
+                $("#myModal").empty();
+                $el =  $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddDef_NationalityEnd = function () {
+
+            $http.post("/Area/Def_Nationality/AddDef_NationalityEnd", $scope.Def_Nationality).then(function (res) {
+                if(res.data.action=="yes"){
+                    $scope.Def_Nationalitys = angular.fromJson(res.data.Def_NationalityList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.EditDef_Nationality = function (ID) {
+            $scope.Def_Nationality = {};
+            $http.get("/Area/Def_Nationality/EditDef_Nationality?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.Def_Nationality = angular.fromJson($("#Def_NationalityBag").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditDef_NationalityEnd = function () {
+
+            $http.post("/Area/Def_Nationality/EditDef_NationalityEnd", $scope.Def_Nationality).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Nationalitys = angular.fromJson(res.data.Def_NationalityList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

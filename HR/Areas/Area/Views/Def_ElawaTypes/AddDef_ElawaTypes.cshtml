@@ -1,0 +1,45 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">اضافة علاوة</div>
+        </div>
+
+        <div class="modal-body">
+
+            <form class="form-horizontal" role="form">
+
+                <div class="row">
+                    <label class="control-label col-md-3"> تاريخ</label>
+                    <input type="date" class="form-control col-md-7" ng-model="ElawaType.DateAdded" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3"> اسم العلاوة </label>
+                    <input type="text" class="form-control col-md-7" ng-model="ElawaType.Name"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3"> النسبة من الاساسي </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="ElawaType.Value" ng-model="ElawaType.SalaryPercent" />
+                    <label class="control-label col-md-1"> القيمة </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="ElawaType.SalaryPercent" ng-model="ElawaType.Value" />
+                </div>
+                
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-4"> دورية <input type="checkbox" ng-value="true" ng-model="ElawaType.Repeated" /></label>
+                    <label class="control-label col-md-3"> مضمومة <input type="checkbox" ng-value="true" ng-model="ElawaType.Included"/> </label>
+                    <label class="control-label col-md-3"> خاضعة للضريبة <input type="checkbox" ng-value="true" ng-model="ElawaType.Taxed" /></label>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddDef_ElawaTypesEnd()"> حفظ </label>
+        </div>
+    </div>
+</div>
+

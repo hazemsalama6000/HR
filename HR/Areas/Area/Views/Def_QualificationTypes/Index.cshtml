@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="row" style="margin:auto 0px" ng-controller="QualificationTypesController">
+    <div class="col-md-12">
+
+        <input type="hidden" id="QualificationTypesID" value="@ViewBag.QualificationTypesViewBag"/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+             <div class="panel-title text-center"> تعريف المؤهلات </div>
+            </div>
+            
+            <div class="panel-body">
+
+                <div class="row">
+                    <label class="btn btn-danger col-md-3" ng-click="AddQualificationTypes()"> اضافة مؤهل </label>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-hover table-responsive table-striped">
+                            <tr>
+                                <td> المؤهل </td>
+                            </tr>
+                            <tr ng-repeat="x in QualificationTypes">
+                                <td>{{x.Name}}</td>
+                                <td>
+                                    <label class="btn btn-primary" ng-click="EditQualificationTypes(x.ID)"> تعديل </label>
+                                    <label class="btn btn-danger" ng-click="DeleteQualificationTypes(x.ID)"> حذف</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var app = angular.module("Hr", []);
+
+    app.controller("QualificationTypesController", function ($scope, $compile, $http) {
+        $scope.QualificationTypes = angular.fromJson($("#QualificationTypesID").val());
+    
+        $scope.DeleteQualificationTypes = function (ID) {
+            $http.get("/Area/Def_QualificationTypes/DeleteQualificationTypes?ID="+ID).then(function (res) {
+                if (res.data.action == "yes") {
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                    $scope.QualificationTypes = angular.fromJson(res.data.QualificationTypesList);
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+        $scope.AddQualificationTypes = function () {
+            $scope.QualificationType={};
+            $http.get("/Area/Def_QualificationTypes/AddQualificationTypes").then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal("show");
+            });
+        }
+
+        $scope.AddQualificationTypesEnd = function () {
+            $http.post("/Area/Def_QualificationTypes/AddQualificationTypesEnd", $scope.QualificationType).then(function (res) {
+                if (res.data.action == "yes") {
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                    $scope.QualificationTypes =angular.fromJson( res.data.QualificationTypesList );
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+        $scope.EditQualificationTypes = function (ID) {
+            $scope.QualificationType = {};
+            $http.get("/Area/Def_QualificationTypes/EditQualificationTypes?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.QualificationType=angular.fromJson($("#QualificationTypeID").val());
+                $("#myModal").modal("show");
+            });
+        }
+
+        $scope.EditQualificationTypesEnd = function () {
+            $http.post("/Area/Def_QualificationTypes/EditQualificationTypesEnd", $scope.QualificationType).then(function (res) {
+                if (res.data.action == "yes") {
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                    $scope.QualificationTypes = angular.fromJson(res.data.QualificationTypesList);
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+</script>

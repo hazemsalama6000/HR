@@ -1,0 +1,2324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Conf_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Conf_SubMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="AreaName" Type="varchar" MaxLength="50" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="50" />
+          <Property Name="PageName" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Conf_SubsubMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubMenuID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="AreaName" Type="varchar" MaxLength="50" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="50" />
+          <Property Name="PageName" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Def_AllowanceTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="money" />
+          <Property Name="Duration" Type="int" />
+        </EntityType>
+        <EntityType Name="Def_Attendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_CardType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Def_Degree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Def_ElawaTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Repeated" Type="bit" />
+          <Property Name="SalaryPercent" Type="real" />
+          <Property Name="Value" Type="money" />
+          <Property Name="Included" Type="bit" />
+          <Property Name="Taxed" Type="bit" />
+          <Property Name="DateAdded" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Def_Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_Jobs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_MaritalStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_MilitaryService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_Nationality">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_Penalty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Value" Type="money" />
+          <Property Name="Daysnum" Type="real" />
+        </EntityType>
+        <EntityType Name="Def_QualificationTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Def_Religion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_RewardTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="money" />
+          <Property Name="DaysNum" Type="real" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_ServiceState">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Def_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="real" />
+          <Property Name="CreatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="EmpAllowance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllowanceTypeID" Type="int" />
+          <Property Name="DateFrom" Type="date" />
+          <Property Name="DateTo" Type="date" />
+          <Property Name="Value" Type="money" />
+          <Property Name="EmpID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmpAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="AttenID" Type="int" />
+          <Property Name="DateAdded" Type="date" />
+          <Property Name="TimeFrom" Type="datetime" />
+          <Property Name="TimeTo" Type="datetime" />
+          <Property Name="Note" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EmpBorrow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="Dateorder" Type="date" />
+          <Property Name="payoffDate" Type="date" />
+          <Property Name="BorrowVal" Type="money" />
+          <Property Name="InstallmentVal" Type="money" />
+          <Property Name="Installmentscount" Type="real" />
+          <Property Name="payoffValue" Type="money" />
+        </EntityType>
+        <EntityType Name="EmpCards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardTypeID" Type="int" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="IdentityNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EmpElawa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="ElawaID" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="SalaryPercent" Type="real" />
+          <Property Name="Value" Type="money" />
+        </EntityType>
+        <EntityType Name="EmpJobs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="JobID" Type="int" />
+          <Property Name="fromDate" Type="date" />
+          <Property Name="toDate" Type="date" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="MasterJobFlag" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmpLeaveEarly">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="DateDay" Type="date" />
+          <Property Name="FromTime" Type="datetime" />
+          <Property Name="ToTime" Type="datetime" />
+          <Property Name="reason" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BithDate" Type="date" />
+          <Property Name="AddressLocation" Type="varchar" MaxLength="300" />
+          <Property Name="NationalityID" Type="int" />
+          <Property Name="MaritalStateID" Type="int" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="ActualHireDate" Type="date" />
+          <Property Name="ServiceState" Type="int" />
+          <Property Name="ReligionID" Type="int" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="MilitaryServiceID" Type="int" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="DegreeID" Type="int" />
+          <Property Name="JobID" Type="int" />
+          <Property Name="imagebytes" Type="image" />
+        </EntityType>
+        <EntityType Name="EmpPenalty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="PenID" Type="int" />
+          <Property Name="Value" Type="money" />
+          <Property Name="Daysnum" Type="real" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="DateAdded" Type="date" />
+        </EntityType>
+        <EntityType Name="EmpPromotions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="DegreeLast" Type="int" />
+          <Property Name="JobLast" Type="int" />
+          <Property Name="DegreeCurrent" Type="int" />
+          <Property Name="JobCurrent" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpQualification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="QualID" Type="int" />
+          <Property Name="University" Type="nvarchar" MaxLength="200" />
+          <Property Name="fromDate" Type="date" />
+          <Property Name="toDate" Type="date" />
+        </EntityType>
+        <EntityType Name="EmpRewards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="RewardID" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="Value" Type="money" />
+          <Property Name="DaysNum" Type="real" />
+          <Property Name="Note" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="EmpSalaryInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="HireSalary" Type="money" />
+          <Property Name="BasicSalary" Type="money" />
+          <Property Name="Insured" Type="bit" />
+          <Property Name="Taxed" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MissionOrTravel" Type="bit" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="200" />
+          <Property Name="fromDate" Type="date" />
+          <Property Name="toDate" Type="date" />
+        </EntityType>
+        <Association Name="FK__Conf_SubM__MenuI__47DBAE45">
+          <End Role="Conf_Menu" Type="Self.Conf_Menu" Multiplicity="0..1" />
+          <End Role="Conf_SubMenu" Type="Self.Conf_SubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conf_Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Conf_SubMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conf_Subs__SubMe__48CFD27E">
+          <End Role="Conf_SubMenu" Type="Self.Conf_SubMenu" Multiplicity="0..1" />
+          <End Role="Conf_SubsubMenu" Type="Self.Conf_SubsubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conf_SubMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Conf_SubsubMenu">
+              <PropertyRef Name="SubMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emp__EmpID__6FE99F9F">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpLeaveEarly" Type="Self.EmpLeaveEarly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpLeaveEarly">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpAllowa__Allow__49C3F6B7">
+          <End Role="Def_AllowanceTypes" Type="Self.Def_AllowanceTypes" Multiplicity="0..1" />
+          <End Role="EmpAllowance" Type="Self.EmpAllowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_AllowanceTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAllowance">
+              <PropertyRef Name="AllowanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpAllowa__EmpID__4AB81AF0">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpAllowance" Type="Self.EmpAllowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAllowance">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpBorrow__EmpID__02FC7413">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpBorrow" Type="Self.EmpBorrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpBorrow">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpCards__CardTy__4D94879B">
+          <End Role="Def_CardType" Type="Self.Def_CardType" Multiplicity="0..1" />
+          <End Role="EmpCards" Type="Self.EmpCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_CardType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpCards">
+              <PropertyRef Name="CardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpCards__EmpID__4E88ABD4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpCards" Type="Self.EmpCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpCards">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpElawa__ElawaI__4F7CD00D">
+          <End Role="Def_ElawaTypes" Type="Self.Def_ElawaTypes" Multiplicity="0..1" />
+          <End Role="EmpElawa" Type="Self.EmpElawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_ElawaTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpElawa">
+              <PropertyRef Name="ElawaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpElawa__EmpID__5070F446">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpElawa" Type="Self.EmpElawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpElawa">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpJobs__EmpID__5165187F">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpJobs" Type="Self.EmpJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpJobs">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpJobs__JobID__52593CB8">
+          <End Role="Def_Jobs" Type="Self.Def_Jobs" Multiplicity="0..1" />
+          <End Role="EmpJobs" Type="Self.EmpJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpJobs">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPenalt__EmpID__5AEE82B9">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpPenalty" Type="Self.EmpPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPenalty">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPenalt__PenID__5BE2A6F2">
+          <End Role="Def_Penalty" Type="Self.Def_Penalty" Multiplicity="0..1" />
+          <End Role="EmpPenalty" Type="Self.EmpPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Penalty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPenalty">
+              <PropertyRef Name="PenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__Degre__5CD6CB2B">
+          <End Role="Def_Degree" Type="Self.Def_Degree" Multiplicity="0..1" />
+          <End Role="EmpPromotions" Type="Self.EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="DegreeLast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__Degre__5DCAEF64">
+          <End Role="Def_Degree" Type="Self.Def_Degree" Multiplicity="0..1" />
+          <End Role="EmpPromotions" Type="Self.EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="DegreeCurrent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__EmpID__5EBF139D">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpPromotions" Type="Self.EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__JobCu__5FB337D6">
+          <End Role="Def_Jobs" Type="Self.Def_Jobs" Multiplicity="0..1" />
+          <End Role="EmpPromotions" Type="Self.EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="JobCurrent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__JobLa__60A75C0F">
+          <End Role="Def_Jobs" Type="Self.Def_Jobs" Multiplicity="0..1" />
+          <End Role="EmpPromotions" Type="Self.EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="JobLast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpQualif__EmpID__4BAC3F29">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpQualification" Type="Self.EmpQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpQualification">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpQualif__QualI__628FA481">
+          <End Role="Def_QualificationTypes" Type="Self.Def_QualificationTypes" Multiplicity="0..1" />
+          <End Role="EmpQualification" Type="Self.EmpQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_QualificationTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpQualification">
+              <PropertyRef Name="QualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpReward__EmpID__6383C8BA">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpRewards" Type="Self.EmpRewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpRewards">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpReward__Rewar__6477ECF3">
+          <End Role="Def_RewardTypes" Type="Self.Def_RewardTypes" Multiplicity="0..1" />
+          <End Role="EmpRewards" Type="Self.EmpRewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_RewardTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpRewards">
+              <PropertyRef Name="RewardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpSalary__EmpID__656C112C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpSalaryInfo" Type="Self.EmpSalaryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpSalaryInfo">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mission__EmpID__66603565">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Mission" Type="Self.Mission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mission">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpAttendance_Def_Attendance">
+          <End Role="Def_Attendance" Type="Self.Def_Attendance" Multiplicity="0..1" />
+          <End Role="EmpAttendance" Type="Self.EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Attendance">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAttendance">
+              <PropertyRef Name="AttenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpAttendance_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpAttendance" Type="Self.EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAttendance">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Degree">
+          <End Role="Def_Degree" Type="Self.Def_Degree" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DegreeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Def_Gender" Type="Self.Def_Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Jobs">
+          <End Role="Def_Jobs" Type="Self.Def_Jobs" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_MaritalStatus">
+          <End Role="Def_MaritalStatus" Type="Self.Def_MaritalStatus" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_MaritalStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="MaritalStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_MilitaryService">
+          <End Role="Def_MilitaryService" Type="Self.Def_MilitaryService" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_MilitaryService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="MilitaryServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Nationality">
+          <End Role="Def_Nationality" Type="Self.Def_Nationality" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Nationality">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="NationalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Religion">
+          <End Role="Def_Religion" Type="Self.Def_Religion" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Religion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ReligionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ServiceState">
+          <End Role="Def_ServiceState" Type="Self.Def_ServiceState" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_ServiceState">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ServiceState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRModelStoreContainer">
+          <EntitySet Name="Conf_Menu" EntityType="Self.Conf_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conf_SubMenu" EntityType="Self.Conf_SubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conf_SubsubMenu" EntityType="Self.Conf_SubsubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_AllowanceTypes" EntityType="Self.Def_AllowanceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Attendance" EntityType="Self.Def_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_CardType" EntityType="Self.Def_CardType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Degree" EntityType="Self.Def_Degree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_ElawaTypes" EntityType="Self.Def_ElawaTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Gender" EntityType="Self.Def_Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Jobs" EntityType="Self.Def_Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_MaritalStatus" EntityType="Self.Def_MaritalStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_MilitaryService" EntityType="Self.Def_MilitaryService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Nationality" EntityType="Self.Def_Nationality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Penalty" EntityType="Self.Def_Penalty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_QualificationTypes" EntityType="Self.Def_QualificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Religion" EntityType="Self.Def_Religion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_RewardTypes" EntityType="Self.Def_RewardTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_ServiceState" EntityType="Self.Def_ServiceState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Def_Users" EntityType="Self.Def_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpAllowance" EntityType="Self.EmpAllowance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpAttendance" EntityType="Self.EmpAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpBorrow" EntityType="Self.EmpBorrow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpCards" EntityType="Self.EmpCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpElawa" EntityType="Self.EmpElawa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpJobs" EntityType="Self.EmpJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpLeaveEarly" EntityType="Self.EmpLeaveEarly" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpPenalty" EntityType="Self.EmpPenalty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpPromotions" EntityType="Self.EmpPromotions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpQualification" EntityType="Self.EmpQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpRewards" EntityType="Self.EmpRewards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpSalaryInfo" EntityType="Self.EmpSalaryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mission" EntityType="Self.Mission" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Conf_SubM__MenuI__47DBAE45" Association="Self.FK__Conf_SubM__MenuI__47DBAE45">
+            <End Role="Conf_Menu" EntitySet="Conf_Menu" />
+            <End Role="Conf_SubMenu" EntitySet="Conf_SubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conf_Subs__SubMe__48CFD27E" Association="Self.FK__Conf_Subs__SubMe__48CFD27E">
+            <End Role="Conf_SubMenu" EntitySet="Conf_SubMenu" />
+            <End Role="Conf_SubsubMenu" EntitySet="Conf_SubsubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emp__EmpID__6FE99F9F" Association="Self.FK__Emp__EmpID__6FE99F9F">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpLeaveEarly" EntitySet="EmpLeaveEarly" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpAllowa__Allow__49C3F6B7" Association="Self.FK__EmpAllowa__Allow__49C3F6B7">
+            <End Role="Def_AllowanceTypes" EntitySet="Def_AllowanceTypes" />
+            <End Role="EmpAllowance" EntitySet="EmpAllowance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpAllowa__EmpID__4AB81AF0" Association="Self.FK__EmpAllowa__EmpID__4AB81AF0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpAllowance" EntitySet="EmpAllowance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpBorrow__EmpID__02FC7413" Association="Self.FK__EmpBorrow__EmpID__02FC7413">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpBorrow" EntitySet="EmpBorrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpCards__CardTy__4D94879B" Association="Self.FK__EmpCards__CardTy__4D94879B">
+            <End Role="Def_CardType" EntitySet="Def_CardType" />
+            <End Role="EmpCards" EntitySet="EmpCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpCards__EmpID__4E88ABD4" Association="Self.FK__EmpCards__EmpID__4E88ABD4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpCards" EntitySet="EmpCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpElawa__ElawaI__4F7CD00D" Association="Self.FK__EmpElawa__ElawaI__4F7CD00D">
+            <End Role="Def_ElawaTypes" EntitySet="Def_ElawaTypes" />
+            <End Role="EmpElawa" EntitySet="EmpElawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpElawa__EmpID__5070F446" Association="Self.FK__EmpElawa__EmpID__5070F446">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpElawa" EntitySet="EmpElawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpJobs__EmpID__5165187F" Association="Self.FK__EmpJobs__EmpID__5165187F">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpJobs" EntitySet="EmpJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpJobs__JobID__52593CB8" Association="Self.FK__EmpJobs__JobID__52593CB8">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpJobs" EntitySet="EmpJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPenalt__EmpID__5AEE82B9" Association="Self.FK__EmpPenalt__EmpID__5AEE82B9">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpPenalty" EntitySet="EmpPenalty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPenalt__PenID__5BE2A6F2" Association="Self.FK__EmpPenalt__PenID__5BE2A6F2">
+            <End Role="Def_Penalty" EntitySet="Def_Penalty" />
+            <End Role="EmpPenalty" EntitySet="EmpPenalty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__Degre__5CD6CB2B" Association="Self.FK__EmpPromot__Degre__5CD6CB2B">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__Degre__5DCAEF64" Association="Self.FK__EmpPromot__Degre__5DCAEF64">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__EmpID__5EBF139D" Association="Self.FK__EmpPromot__EmpID__5EBF139D">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__JobCu__5FB337D6" Association="Self.FK__EmpPromot__JobCu__5FB337D6">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__JobLa__60A75C0F" Association="Self.FK__EmpPromot__JobLa__60A75C0F">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpQualif__EmpID__4BAC3F29" Association="Self.FK__EmpQualif__EmpID__4BAC3F29">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpQualification" EntitySet="EmpQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpQualif__QualI__628FA481" Association="Self.FK__EmpQualif__QualI__628FA481">
+            <End Role="Def_QualificationTypes" EntitySet="Def_QualificationTypes" />
+            <End Role="EmpQualification" EntitySet="EmpQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpReward__EmpID__6383C8BA" Association="Self.FK__EmpReward__EmpID__6383C8BA">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpRewards" EntitySet="EmpRewards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpReward__Rewar__6477ECF3" Association="Self.FK__EmpReward__Rewar__6477ECF3">
+            <End Role="Def_RewardTypes" EntitySet="Def_RewardTypes" />
+            <End Role="EmpRewards" EntitySet="EmpRewards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpSalary__EmpID__656C112C" Association="Self.FK__EmpSalary__EmpID__656C112C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpSalaryInfo" EntitySet="EmpSalaryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mission__EmpID__66603565" Association="Self.FK__Mission__EmpID__66603565">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Mission" EntitySet="Mission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpAttendance_Def_Attendance" Association="Self.FK_EmpAttendance_Def_Attendance">
+            <End Role="Def_Attendance" EntitySet="Def_Attendance" />
+            <End Role="EmpAttendance" EntitySet="EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpAttendance_Employee" Association="Self.FK_EmpAttendance_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpAttendance" EntitySet="EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Degree" Association="Self.FK_Employee_Degree">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Def_Gender" EntitySet="Def_Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Jobs" Association="Self.FK_Employee_Jobs">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_MaritalStatus" Association="Self.FK_Employee_MaritalStatus">
+            <End Role="Def_MaritalStatus" EntitySet="Def_MaritalStatus" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_MilitaryService" Association="Self.FK_Employee_MilitaryService">
+            <End Role="Def_MilitaryService" EntitySet="Def_MilitaryService" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Nationality" Association="Self.FK_Employee_Nationality">
+            <End Role="Def_Nationality" EntitySet="Def_Nationality" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Religion" Association="Self.FK_Employee_Religion">
+            <End Role="Def_Religion" EntitySet="Def_Religion" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ServiceState" Association="Self.FK_Employee_ServiceState">
+            <End Role="Def_ServiceState" EntitySet="Def_ServiceState" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Conf_Menu" EntityType="HRModel.Conf_Menu" />
+          <EntitySet Name="Conf_SubMenu" EntityType="HRModel.Conf_SubMenu" />
+          <EntitySet Name="Conf_SubsubMenu" EntityType="HRModel.Conf_SubsubMenu" />
+          <EntitySet Name="Def_AllowanceTypes" EntityType="HRModel.Def_AllowanceTypes" />
+          <EntitySet Name="Def_Attendance" EntityType="HRModel.Def_Attendance" />
+          <EntitySet Name="Def_CardType" EntityType="HRModel.Def_CardType" />
+          <EntitySet Name="Def_Degree" EntityType="HRModel.Def_Degree" />
+          <EntitySet Name="Def_ElawaTypes" EntityType="HRModel.Def_ElawaTypes" />
+          <EntitySet Name="Def_Gender" EntityType="HRModel.Def_Gender" />
+          <EntitySet Name="Def_Jobs" EntityType="HRModel.Def_Jobs" />
+          <EntitySet Name="Def_MaritalStatus" EntityType="HRModel.Def_MaritalStatus" />
+          <EntitySet Name="Def_MilitaryService" EntityType="HRModel.Def_MilitaryService" />
+          <EntitySet Name="Def_Nationality" EntityType="HRModel.Def_Nationality" />
+          <EntitySet Name="Def_Penalty" EntityType="HRModel.Def_Penalty" />
+          <EntitySet Name="Def_QualificationTypes" EntityType="HRModel.Def_QualificationTypes" />
+          <EntitySet Name="Def_Religion" EntityType="HRModel.Def_Religion" />
+          <EntitySet Name="Def_RewardTypes" EntityType="HRModel.Def_RewardTypes" />
+          <EntitySet Name="Def_ServiceState" EntityType="HRModel.Def_ServiceState" />
+          <EntitySet Name="Def_Users" EntityType="HRModel.Def_Users" />
+          <EntitySet Name="EmpAllowance" EntityType="HRModel.EmpAllowance" />
+          <EntitySet Name="EmpAttendance" EntityType="HRModel.EmpAttendance" />
+          <EntitySet Name="EmpBorrow" EntityType="HRModel.EmpBorrow" />
+          <EntitySet Name="EmpCards" EntityType="HRModel.EmpCards" />
+          <EntitySet Name="EmpElawa" EntityType="HRModel.EmpElawa" />
+          <EntitySet Name="EmpJobs" EntityType="HRModel.EmpJobs" />
+          <EntitySet Name="EmpLeaveEarly" EntityType="HRModel.EmpLeaveEarly" />
+          <EntitySet Name="Employee" EntityType="HRModel.Employee" />
+          <EntitySet Name="EmpPenalty" EntityType="HRModel.EmpPenalty" />
+          <EntitySet Name="EmpPromotions" EntityType="HRModel.EmpPromotions" />
+          <EntitySet Name="EmpQualification" EntityType="HRModel.EmpQualification" />
+          <EntitySet Name="EmpRewards" EntityType="HRModel.EmpRewards" />
+          <EntitySet Name="EmpSalaryInfo" EntityType="HRModel.EmpSalaryInfo" />
+          <EntitySet Name="Mission" EntityType="HRModel.Mission" />
+          <AssociationSet Name="FK__Conf_SubM__MenuI__47DBAE45" Association="HRModel.FK__Conf_SubM__MenuI__47DBAE45">
+            <End Role="Conf_Menu" EntitySet="Conf_Menu" />
+            <End Role="Conf_SubMenu" EntitySet="Conf_SubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conf_Subs__SubMe__48CFD27E" Association="HRModel.FK__Conf_Subs__SubMe__48CFD27E">
+            <End Role="Conf_SubMenu" EntitySet="Conf_SubMenu" />
+            <End Role="Conf_SubsubMenu" EntitySet="Conf_SubsubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpAllowa__Allow__49C3F6B7" Association="HRModel.FK__EmpAllowa__Allow__49C3F6B7">
+            <End Role="Def_AllowanceTypes" EntitySet="Def_AllowanceTypes" />
+            <End Role="EmpAllowance" EntitySet="EmpAllowance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpAttendance_Def_Attendance" Association="HRModel.FK_EmpAttendance_Def_Attendance">
+            <End Role="Def_Attendance" EntitySet="Def_Attendance" />
+            <End Role="EmpAttendance" EntitySet="EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpCards__CardTy__4D94879B" Association="HRModel.FK__EmpCards__CardTy__4D94879B">
+            <End Role="Def_CardType" EntitySet="Def_CardType" />
+            <End Role="EmpCards" EntitySet="EmpCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__Degre__5CD6CB2B" Association="HRModel.FK__EmpPromot__Degre__5CD6CB2B">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__Degre__5DCAEF64" Association="HRModel.FK__EmpPromot__Degre__5DCAEF64">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Degree" Association="HRModel.FK_Employee_Degree">
+            <End Role="Def_Degree" EntitySet="Def_Degree" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpElawa__ElawaI__4F7CD00D" Association="HRModel.FK__EmpElawa__ElawaI__4F7CD00D">
+            <End Role="Def_ElawaTypes" EntitySet="Def_ElawaTypes" />
+            <End Role="EmpElawa" EntitySet="EmpElawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="HRModel.FK_Employee_Gender">
+            <End Role="Def_Gender" EntitySet="Def_Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpJobs__JobID__52593CB8" Association="HRModel.FK__EmpJobs__JobID__52593CB8">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpJobs" EntitySet="EmpJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__JobCu__5FB337D6" Association="HRModel.FK__EmpPromot__JobCu__5FB337D6">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__JobLa__60A75C0F" Association="HRModel.FK__EmpPromot__JobLa__60A75C0F">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Jobs" Association="HRModel.FK_Employee_Jobs">
+            <End Role="Def_Jobs" EntitySet="Def_Jobs" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_MaritalStatus" Association="HRModel.FK_Employee_MaritalStatus">
+            <End Role="Def_MaritalStatus" EntitySet="Def_MaritalStatus" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_MilitaryService" Association="HRModel.FK_Employee_MilitaryService">
+            <End Role="Def_MilitaryService" EntitySet="Def_MilitaryService" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Nationality" Association="HRModel.FK_Employee_Nationality">
+            <End Role="Def_Nationality" EntitySet="Def_Nationality" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPenalt__PenID__5BE2A6F2" Association="HRModel.FK__EmpPenalt__PenID__5BE2A6F2">
+            <End Role="Def_Penalty" EntitySet="Def_Penalty" />
+            <End Role="EmpPenalty" EntitySet="EmpPenalty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpQualif__QualI__628FA481" Association="HRModel.FK__EmpQualif__QualI__628FA481">
+            <End Role="Def_QualificationTypes" EntitySet="Def_QualificationTypes" />
+            <End Role="EmpQualification" EntitySet="EmpQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Religion" Association="HRModel.FK_Employee_Religion">
+            <End Role="Def_Religion" EntitySet="Def_Religion" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpReward__Rewar__6477ECF3" Association="HRModel.FK__EmpReward__Rewar__6477ECF3">
+            <End Role="Def_RewardTypes" EntitySet="Def_RewardTypes" />
+            <End Role="EmpRewards" EntitySet="EmpRewards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ServiceState" Association="HRModel.FK_Employee_ServiceState">
+            <End Role="Def_ServiceState" EntitySet="Def_ServiceState" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpAllowa__EmpID__4AB81AF0" Association="HRModel.FK__EmpAllowa__EmpID__4AB81AF0">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpAllowance" EntitySet="EmpAllowance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpAttendance_Employee" Association="HRModel.FK_EmpAttendance_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpAttendance" EntitySet="EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpBorrow__EmpID__02FC7413" Association="HRModel.FK__EmpBorrow__EmpID__02FC7413">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpBorrow" EntitySet="EmpBorrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpCards__EmpID__4E88ABD4" Association="HRModel.FK__EmpCards__EmpID__4E88ABD4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpCards" EntitySet="EmpCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpElawa__EmpID__5070F446" Association="HRModel.FK__EmpElawa__EmpID__5070F446">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpElawa" EntitySet="EmpElawa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpJobs__EmpID__5165187F" Association="HRModel.FK__EmpJobs__EmpID__5165187F">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpJobs" EntitySet="EmpJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emp__EmpID__6FE99F9F" Association="HRModel.FK__Emp__EmpID__6FE99F9F">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpLeaveEarly" EntitySet="EmpLeaveEarly" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPenalt__EmpID__5AEE82B9" Association="HRModel.FK__EmpPenalt__EmpID__5AEE82B9">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpPenalty" EntitySet="EmpPenalty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpPromot__EmpID__5EBF139D" Association="HRModel.FK__EmpPromot__EmpID__5EBF139D">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpPromotions" EntitySet="EmpPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpQualif__EmpID__4BAC3F29" Association="HRModel.FK__EmpQualif__EmpID__4BAC3F29">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpQualification" EntitySet="EmpQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpReward__EmpID__6383C8BA" Association="HRModel.FK__EmpReward__EmpID__6383C8BA">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpRewards" EntitySet="EmpRewards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmpSalary__EmpID__656C112C" Association="HRModel.FK__EmpSalary__EmpID__656C112C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpSalaryInfo" EntitySet="EmpSalaryInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mission__EmpID__66603565" Association="HRModel.FK__Mission__EmpID__66603565">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Mission" EntitySet="Mission" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Conf_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="Conf_SubMenu" Relationship="HRModel.FK__Conf_SubM__MenuI__47DBAE45" FromRole="Conf_Menu" ToRole="Conf_SubMenu" />
+        </EntityType>
+        <EntityType Name="Conf_SubMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="Conf_Menu" Relationship="HRModel.FK__Conf_SubM__MenuI__47DBAE45" FromRole="Conf_SubMenu" ToRole="Conf_Menu" />
+          <NavigationProperty Name="Conf_SubsubMenu" Relationship="HRModel.FK__Conf_Subs__SubMe__48CFD27E" FromRole="Conf_SubMenu" ToRole="Conf_SubsubMenu" />
+        </EntityType>
+        <EntityType Name="Conf_SubsubMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubMenuID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="Conf_SubMenu" Relationship="HRModel.FK__Conf_Subs__SubMe__48CFD27E" FromRole="Conf_SubsubMenu" ToRole="Conf_SubMenu" />
+        </EntityType>
+        <EntityType Name="Def_AllowanceTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Duration" Type="Int32" />
+          <NavigationProperty Name="EmpAllowance" Relationship="HRModel.FK__EmpAllowa__Allow__49C3F6B7" FromRole="Def_AllowanceTypes" ToRole="EmpAllowance" />
+        </EntityType>
+        <EntityType Name="Def_Attendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpAttendance" Relationship="HRModel.FK_EmpAttendance_Def_Attendance" FromRole="Def_Attendance" ToRole="EmpAttendance" />
+        </EntityType>
+        <EntityType Name="Def_CardType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpCards" Relationship="HRModel.FK__EmpCards__CardTy__4D94879B" FromRole="Def_CardType" ToRole="EmpCards" />
+        </EntityType>
+        <EntityType Name="Def_Degree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpPromotions" Relationship="HRModel.FK__EmpPromot__Degre__5CD6CB2B" FromRole="Def_Degree" ToRole="EmpPromotions" />
+          <NavigationProperty Name="EmpPromotions1" Relationship="HRModel.FK__EmpPromot__Degre__5DCAEF64" FromRole="Def_Degree" ToRole="EmpPromotions" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_Degree" FromRole="Def_Degree" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_ElawaTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Repeated" Type="Boolean" />
+          <Property Name="SalaryPercent" Type="Single" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Included" Type="Boolean" />
+          <Property Name="Taxed" Type="Boolean" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EmpElawa" Relationship="HRModel.FK__EmpElawa__ElawaI__4F7CD00D" FromRole="Def_ElawaTypes" ToRole="EmpElawa" />
+        </EntityType>
+        <EntityType Name="Def_Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_Gender" FromRole="Def_Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_Jobs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpJobs" Relationship="HRModel.FK__EmpJobs__JobID__52593CB8" FromRole="Def_Jobs" ToRole="EmpJobs" />
+          <NavigationProperty Name="EmpPromotions" Relationship="HRModel.FK__EmpPromot__JobCu__5FB337D6" FromRole="Def_Jobs" ToRole="EmpPromotions" />
+          <NavigationProperty Name="EmpPromotions1" Relationship="HRModel.FK__EmpPromot__JobLa__60A75C0F" FromRole="Def_Jobs" ToRole="EmpPromotions" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_Jobs" FromRole="Def_Jobs" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_MaritalStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_MaritalStatus" FromRole="Def_MaritalStatus" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_MilitaryService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_MilitaryService" FromRole="Def_MilitaryService" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_Nationality">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_Nationality" FromRole="Def_Nationality" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_Penalty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Daysnum" Type="Single" />
+          <NavigationProperty Name="EmpPenalty" Relationship="HRModel.FK__EmpPenalt__PenID__5BE2A6F2" FromRole="Def_Penalty" ToRole="EmpPenalty" />
+        </EntityType>
+        <EntityType Name="Def_QualificationTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpQualification" Relationship="HRModel.FK__EmpQualif__QualI__628FA481" FromRole="Def_QualificationTypes" ToRole="EmpQualification" />
+        </EntityType>
+        <EntityType Name="Def_Religion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_Religion" FromRole="Def_Religion" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_RewardTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DaysNum" Type="Single" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpRewards" Relationship="HRModel.FK__EmpReward__Rewar__6477ECF3" FromRole="Def_RewardTypes" ToRole="EmpRewards" />
+        </EntityType>
+        <EntityType Name="Def_ServiceState">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_Employee_ServiceState" FromRole="Def_ServiceState" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Def_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="Single" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="EmpAllowance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllowanceTypeID" Type="Int32" />
+          <Property Name="DateFrom" Type="DateTime" Precision="0" />
+          <Property Name="DateTo" Type="DateTime" Precision="0" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EmpID" Type="Int32" />
+          <NavigationProperty Name="Def_AllowanceTypes" Relationship="HRModel.FK__EmpAllowa__Allow__49C3F6B7" FromRole="EmpAllowance" ToRole="Def_AllowanceTypes" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpAllowa__EmpID__4AB81AF0" FromRole="EmpAllowance" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="AttenID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="0" />
+          <Property Name="TimeFrom" Type="DateTime" Precision="3" />
+          <Property Name="TimeTo" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Def_Attendance" Relationship="HRModel.FK_EmpAttendance_Def_Attendance" FromRole="EmpAttendance" ToRole="Def_Attendance" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK_EmpAttendance_Employee" FromRole="EmpAttendance" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpBorrow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="Dateorder" Type="DateTime" Precision="0" />
+          <Property Name="payoffDate" Type="DateTime" Precision="0" />
+          <Property Name="BorrowVal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InstallmentVal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Installmentscount" Type="Single" />
+          <Property Name="payoffValue" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpBorrow__EmpID__02FC7413" FromRole="EmpBorrow" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpCards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardTypeID" Type="Int32" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Def_CardType" Relationship="HRModel.FK__EmpCards__CardTy__4D94879B" FromRole="EmpCards" ToRole="Def_CardType" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpCards__EmpID__4E88ABD4" FromRole="EmpCards" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpElawa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="ElawaID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="SalaryPercent" Type="Single" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Def_ElawaTypes" Relationship="HRModel.FK__EmpElawa__ElawaI__4F7CD00D" FromRole="EmpElawa" ToRole="Def_ElawaTypes" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpElawa__EmpID__5070F446" FromRole="EmpElawa" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpJobs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="JobID" Type="Int32" />
+          <Property Name="fromDate" Type="DateTime" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MasterJobFlag" Type="Boolean" />
+          <NavigationProperty Name="Def_Jobs" Relationship="HRModel.FK__EmpJobs__JobID__52593CB8" FromRole="EmpJobs" ToRole="Def_Jobs" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpJobs__EmpID__5165187F" FromRole="EmpJobs" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpLeaveEarly">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="DateDay" Type="DateTime" Precision="0" />
+          <Property Name="FromTime" Type="DateTime" Precision="3" />
+          <Property Name="ToTime" Type="DateTime" Precision="3" />
+          <Property Name="reason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__Emp__EmpID__6FE99F9F" FromRole="EmpLeaveEarly" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BithDate" Type="DateTime" Precision="0" />
+          <Property Name="AddressLocation" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="NationalityID" Type="Int32" />
+          <Property Name="MaritalStateID" Type="Int32" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="ActualHireDate" Type="DateTime" Precision="0" />
+          <Property Name="ServiceState" Type="Int32" />
+          <Property Name="ReligionID" Type="Int32" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="MilitaryServiceID" Type="Int32" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DegreeID" Type="Int32" />
+          <Property Name="JobID" Type="Int32" />
+          <Property Name="imagebytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Def_Degree" Relationship="HRModel.FK_Employee_Degree" FromRole="Employee" ToRole="Def_Degree" />
+          <NavigationProperty Name="Def_Gender" Relationship="HRModel.FK_Employee_Gender" FromRole="Employee" ToRole="Def_Gender" />
+          <NavigationProperty Name="Def_Jobs" Relationship="HRModel.FK_Employee_Jobs" FromRole="Employee" ToRole="Def_Jobs" />
+          <NavigationProperty Name="Def_MaritalStatus" Relationship="HRModel.FK_Employee_MaritalStatus" FromRole="Employee" ToRole="Def_MaritalStatus" />
+          <NavigationProperty Name="Def_MilitaryService" Relationship="HRModel.FK_Employee_MilitaryService" FromRole="Employee" ToRole="Def_MilitaryService" />
+          <NavigationProperty Name="Def_Nationality" Relationship="HRModel.FK_Employee_Nationality" FromRole="Employee" ToRole="Def_Nationality" />
+          <NavigationProperty Name="Def_Religion" Relationship="HRModel.FK_Employee_Religion" FromRole="Employee" ToRole="Def_Religion" />
+          <NavigationProperty Name="Def_ServiceState" Relationship="HRModel.FK_Employee_ServiceState" FromRole="Employee" ToRole="Def_ServiceState" />
+          <NavigationProperty Name="EmpAllowance" Relationship="HRModel.FK__EmpAllowa__EmpID__4AB81AF0" FromRole="Employee" ToRole="EmpAllowance" />
+          <NavigationProperty Name="EmpAttendance" Relationship="HRModel.FK_EmpAttendance_Employee" FromRole="Employee" ToRole="EmpAttendance" />
+          <NavigationProperty Name="EmpBorrow" Relationship="HRModel.FK__EmpBorrow__EmpID__02FC7413" FromRole="Employee" ToRole="EmpBorrow" />
+          <NavigationProperty Name="EmpCards" Relationship="HRModel.FK__EmpCards__EmpID__4E88ABD4" FromRole="Employee" ToRole="EmpCards" />
+          <NavigationProperty Name="EmpElawa" Relationship="HRModel.FK__EmpElawa__EmpID__5070F446" FromRole="Employee" ToRole="EmpElawa" />
+          <NavigationProperty Name="EmpJobs" Relationship="HRModel.FK__EmpJobs__EmpID__5165187F" FromRole="Employee" ToRole="EmpJobs" />
+          <NavigationProperty Name="EmpLeaveEarly" Relationship="HRModel.FK__Emp__EmpID__6FE99F9F" FromRole="Employee" ToRole="EmpLeaveEarly" />
+          <NavigationProperty Name="EmpPenalty" Relationship="HRModel.FK__EmpPenalt__EmpID__5AEE82B9" FromRole="Employee" ToRole="EmpPenalty" />
+          <NavigationProperty Name="EmpPromotions" Relationship="HRModel.FK__EmpPromot__EmpID__5EBF139D" FromRole="Employee" ToRole="EmpPromotions" />
+          <NavigationProperty Name="EmpQualification" Relationship="HRModel.FK__EmpQualif__EmpID__4BAC3F29" FromRole="Employee" ToRole="EmpQualification" />
+          <NavigationProperty Name="EmpRewards" Relationship="HRModel.FK__EmpReward__EmpID__6383C8BA" FromRole="Employee" ToRole="EmpRewards" />
+          <NavigationProperty Name="EmpSalaryInfo" Relationship="HRModel.FK__EmpSalary__EmpID__656C112C" FromRole="Employee" ToRole="EmpSalaryInfo" />
+          <NavigationProperty Name="Mission" Relationship="HRModel.FK__Mission__EmpID__66603565" FromRole="Employee" ToRole="Mission" />
+        </EntityType>
+        <EntityType Name="EmpPenalty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="PenID" Type="Int32" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Daysnum" Type="Single" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DateAdded" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Def_Penalty" Relationship="HRModel.FK__EmpPenalt__PenID__5BE2A6F2" FromRole="EmpPenalty" ToRole="Def_Penalty" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpPenalt__EmpID__5AEE82B9" FromRole="EmpPenalty" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpPromotions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="DegreeLast" Type="Int32" />
+          <Property Name="JobLast" Type="Int32" />
+          <Property Name="DegreeCurrent" Type="Int32" />
+          <Property Name="JobCurrent" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Def_Degree" Relationship="HRModel.FK__EmpPromot__Degre__5CD6CB2B" FromRole="EmpPromotions" ToRole="Def_Degree" />
+          <NavigationProperty Name="Def_Degree1" Relationship="HRModel.FK__EmpPromot__Degre__5DCAEF64" FromRole="EmpPromotions" ToRole="Def_Degree" />
+          <NavigationProperty Name="Def_Jobs" Relationship="HRModel.FK__EmpPromot__JobCu__5FB337D6" FromRole="EmpPromotions" ToRole="Def_Jobs" />
+          <NavigationProperty Name="Def_Jobs1" Relationship="HRModel.FK__EmpPromot__JobLa__60A75C0F" FromRole="EmpPromotions" ToRole="Def_Jobs" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpPromot__EmpID__5EBF139D" FromRole="EmpPromotions" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpQualification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="QualID" Type="Int32" />
+          <Property Name="University" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fromDate" Type="DateTime" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Def_QualificationTypes" Relationship="HRModel.FK__EmpQualif__QualI__628FA481" FromRole="EmpQualification" ToRole="Def_QualificationTypes" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpQualif__EmpID__4BAC3F29" FromRole="EmpQualification" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpRewards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="RewardID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="Value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DaysNum" Type="Single" />
+          <Property Name="Note" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Def_RewardTypes" Relationship="HRModel.FK__EmpReward__Rewar__6477ECF3" FromRole="EmpRewards" ToRole="Def_RewardTypes" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpReward__EmpID__6383C8BA" FromRole="EmpRewards" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmpSalaryInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="HireSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Insured" Type="Boolean" />
+          <Property Name="Taxed" Type="Boolean" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__EmpSalary__EmpID__656C112C" FromRole="EmpSalaryInfo" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Mission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MissionOrTravel" Type="Boolean" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fromDate" Type="DateTime" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="HRModel.FK__Mission__EmpID__66603565" FromRole="Mission" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__Conf_SubM__MenuI__47DBAE45">
+          <End Type="HRModel.Conf_Menu" Role="Conf_Menu" Multiplicity="0..1" />
+          <End Type="HRModel.Conf_SubMenu" Role="Conf_SubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conf_Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Conf_SubMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conf_Subs__SubMe__48CFD27E">
+          <End Type="HRModel.Conf_SubMenu" Role="Conf_SubMenu" Multiplicity="0..1" />
+          <End Type="HRModel.Conf_SubsubMenu" Role="Conf_SubsubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conf_SubMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Conf_SubsubMenu">
+              <PropertyRef Name="SubMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpAllowa__Allow__49C3F6B7">
+          <End Type="HRModel.Def_AllowanceTypes" Role="Def_AllowanceTypes" Multiplicity="0..1" />
+          <End Type="HRModel.EmpAllowance" Role="EmpAllowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_AllowanceTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAllowance">
+              <PropertyRef Name="AllowanceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpAttendance_Def_Attendance">
+          <End Type="HRModel.Def_Attendance" Role="Def_Attendance" Multiplicity="0..1" />
+          <End Type="HRModel.EmpAttendance" Role="EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Attendance">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAttendance">
+              <PropertyRef Name="AttenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpCards__CardTy__4D94879B">
+          <End Type="HRModel.Def_CardType" Role="Def_CardType" Multiplicity="0..1" />
+          <End Type="HRModel.EmpCards" Role="EmpCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_CardType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpCards">
+              <PropertyRef Name="CardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__Degre__5CD6CB2B">
+          <End Type="HRModel.Def_Degree" Role="Def_Degree" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPromotions" Role="EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="DegreeLast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__Degre__5DCAEF64">
+          <End Type="HRModel.Def_Degree" Role="Def_Degree" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPromotions" Role="EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="DegreeCurrent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Degree">
+          <End Type="HRModel.Def_Degree" Role="Def_Degree" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Degree">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DegreeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpElawa__ElawaI__4F7CD00D">
+          <End Type="HRModel.Def_ElawaTypes" Role="Def_ElawaTypes" Multiplicity="0..1" />
+          <End Type="HRModel.EmpElawa" Role="EmpElawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_ElawaTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpElawa">
+              <PropertyRef Name="ElawaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Type="HRModel.Def_Gender" Role="Def_Gender" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpJobs__JobID__52593CB8">
+          <End Type="HRModel.Def_Jobs" Role="Def_Jobs" Multiplicity="0..1" />
+          <End Type="HRModel.EmpJobs" Role="EmpJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpJobs">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__JobCu__5FB337D6">
+          <End Type="HRModel.Def_Jobs" Role="Def_Jobs" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPromotions" Role="EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="JobCurrent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__JobLa__60A75C0F">
+          <End Type="HRModel.Def_Jobs" Role="Def_Jobs" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPromotions" Role="EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="JobLast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Jobs">
+          <End Type="HRModel.Def_Jobs" Role="Def_Jobs" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Jobs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_MaritalStatus">
+          <End Type="HRModel.Def_MaritalStatus" Role="Def_MaritalStatus" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_MaritalStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="MaritalStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_MilitaryService">
+          <End Type="HRModel.Def_MilitaryService" Role="Def_MilitaryService" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_MilitaryService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="MilitaryServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Nationality">
+          <End Type="HRModel.Def_Nationality" Role="Def_Nationality" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Nationality">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="NationalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPenalt__PenID__5BE2A6F2">
+          <End Type="HRModel.Def_Penalty" Role="Def_Penalty" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPenalty" Role="EmpPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Penalty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPenalty">
+              <PropertyRef Name="PenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpQualif__QualI__628FA481">
+          <End Type="HRModel.Def_QualificationTypes" Role="Def_QualificationTypes" Multiplicity="0..1" />
+          <End Type="HRModel.EmpQualification" Role="EmpQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_QualificationTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpQualification">
+              <PropertyRef Name="QualID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Religion">
+          <End Type="HRModel.Def_Religion" Role="Def_Religion" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_Religion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ReligionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpReward__Rewar__6477ECF3">
+          <End Type="HRModel.Def_RewardTypes" Role="Def_RewardTypes" Multiplicity="0..1" />
+          <End Type="HRModel.EmpRewards" Role="EmpRewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_RewardTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpRewards">
+              <PropertyRef Name="RewardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_ServiceState">
+          <End Type="HRModel.Def_ServiceState" Role="Def_ServiceState" Multiplicity="0..1" />
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Def_ServiceState">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ServiceState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpAllowa__EmpID__4AB81AF0">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpAllowance" Role="EmpAllowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAllowance">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpAttendance_Employee">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpAttendance" Role="EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpAttendance">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpBorrow__EmpID__02FC7413">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpBorrow" Role="EmpBorrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpBorrow">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpCards__EmpID__4E88ABD4">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpCards" Role="EmpCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpCards">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpElawa__EmpID__5070F446">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpElawa" Role="EmpElawa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpElawa">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpJobs__EmpID__5165187F">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpJobs" Role="EmpJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpJobs">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emp__EmpID__6FE99F9F">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpLeaveEarly" Role="EmpLeaveEarly" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpLeaveEarly">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPenalt__EmpID__5AEE82B9">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPenalty" Role="EmpPenalty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPenalty">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpPromot__EmpID__5EBF139D">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpPromotions" Role="EmpPromotions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPromotions">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpQualif__EmpID__4BAC3F29">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpQualification" Role="EmpQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpQualification">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpReward__EmpID__6383C8BA">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpRewards" Role="EmpRewards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpRewards">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmpSalary__EmpID__656C112C">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.EmpSalaryInfo" Role="EmpSalaryInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpSalaryInfo">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mission__EmpID__66603565">
+          <End Type="HRModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HRModel.Mission" Role="Mission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mission">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRModelStoreContainer" CdmEntityContainer="HREntities">
+          <EntitySetMapping Name="Conf_Menu">
+            <EntityTypeMapping TypeName="HRModel.Conf_Menu">
+              <MappingFragment StoreEntitySet="Conf_Menu">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conf_SubMenu">
+            <EntityTypeMapping TypeName="HRModel.Conf_SubMenu">
+              <MappingFragment StoreEntitySet="Conf_SubMenu">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conf_SubsubMenu">
+            <EntityTypeMapping TypeName="HRModel.Conf_SubsubMenu">
+              <MappingFragment StoreEntitySet="Conf_SubsubMenu">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_AllowanceTypes">
+            <EntityTypeMapping TypeName="HRModel.Def_AllowanceTypes">
+              <MappingFragment StoreEntitySet="Def_AllowanceTypes">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Attendance">
+            <EntityTypeMapping TypeName="HRModel.Def_Attendance">
+              <MappingFragment StoreEntitySet="Def_Attendance">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_CardType">
+            <EntityTypeMapping TypeName="HRModel.Def_CardType">
+              <MappingFragment StoreEntitySet="Def_CardType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Degree">
+            <EntityTypeMapping TypeName="HRModel.Def_Degree">
+              <MappingFragment StoreEntitySet="Def_Degree">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_ElawaTypes">
+            <EntityTypeMapping TypeName="HRModel.Def_ElawaTypes">
+              <MappingFragment StoreEntitySet="Def_ElawaTypes">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Taxed" ColumnName="Taxed" />
+                <ScalarProperty Name="Included" ColumnName="Included" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SalaryPercent" ColumnName="SalaryPercent" />
+                <ScalarProperty Name="Repeated" ColumnName="Repeated" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Gender">
+            <EntityTypeMapping TypeName="HRModel.Def_Gender">
+              <MappingFragment StoreEntitySet="Def_Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Jobs">
+            <EntityTypeMapping TypeName="HRModel.Def_Jobs">
+              <MappingFragment StoreEntitySet="Def_Jobs">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_MaritalStatus">
+            <EntityTypeMapping TypeName="HRModel.Def_MaritalStatus">
+              <MappingFragment StoreEntitySet="Def_MaritalStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_MilitaryService">
+            <EntityTypeMapping TypeName="HRModel.Def_MilitaryService">
+              <MappingFragment StoreEntitySet="Def_MilitaryService">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Nationality">
+            <EntityTypeMapping TypeName="HRModel.Def_Nationality">
+              <MappingFragment StoreEntitySet="Def_Nationality">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Penalty">
+            <EntityTypeMapping TypeName="HRModel.Def_Penalty">
+              <MappingFragment StoreEntitySet="Def_Penalty">
+                <ScalarProperty Name="Daysnum" ColumnName="Daysnum" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_QualificationTypes">
+            <EntityTypeMapping TypeName="HRModel.Def_QualificationTypes">
+              <MappingFragment StoreEntitySet="Def_QualificationTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Religion">
+            <EntityTypeMapping TypeName="HRModel.Def_Religion">
+              <MappingFragment StoreEntitySet="Def_Religion">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_RewardTypes">
+            <EntityTypeMapping TypeName="HRModel.Def_RewardTypes">
+              <MappingFragment StoreEntitySet="Def_RewardTypes">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DaysNum" ColumnName="DaysNum" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_ServiceState">
+            <EntityTypeMapping TypeName="HRModel.Def_ServiceState">
+              <MappingFragment StoreEntitySet="Def_ServiceState">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Def_Users">
+            <EntityTypeMapping TypeName="HRModel.Def_Users">
+              <MappingFragment StoreEntitySet="Def_Users">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpAllowance">
+            <EntityTypeMapping TypeName="HRModel.EmpAllowance">
+              <MappingFragment StoreEntitySet="EmpAllowance">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="AllowanceTypeID" ColumnName="AllowanceTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpAttendance">
+            <EntityTypeMapping TypeName="HRModel.EmpAttendance">
+              <MappingFragment StoreEntitySet="EmpAttendance">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+                <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="AttenID" ColumnName="AttenID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpBorrow">
+            <EntityTypeMapping TypeName="HRModel.EmpBorrow">
+              <MappingFragment StoreEntitySet="EmpBorrow">
+                <ScalarProperty Name="payoffValue" ColumnName="payoffValue" />
+                <ScalarProperty Name="Installmentscount" ColumnName="Installmentscount" />
+                <ScalarProperty Name="InstallmentVal" ColumnName="InstallmentVal" />
+                <ScalarProperty Name="BorrowVal" ColumnName="BorrowVal" />
+                <ScalarProperty Name="payoffDate" ColumnName="payoffDate" />
+                <ScalarProperty Name="Dateorder" ColumnName="Dateorder" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpCards">
+            <EntityTypeMapping TypeName="HRModel.EmpCards">
+              <MappingFragment StoreEntitySet="EmpCards">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="CardTypeID" ColumnName="CardTypeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpElawa">
+            <EntityTypeMapping TypeName="HRModel.EmpElawa">
+              <MappingFragment StoreEntitySet="EmpElawa">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SalaryPercent" ColumnName="SalaryPercent" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="ElawaID" ColumnName="ElawaID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpJobs">
+            <EntityTypeMapping TypeName="HRModel.EmpJobs">
+              <MappingFragment StoreEntitySet="EmpJobs">
+                <ScalarProperty Name="MasterJobFlag" ColumnName="MasterJobFlag" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpLeaveEarly">
+            <EntityTypeMapping TypeName="HRModel.EmpLeaveEarly">
+              <MappingFragment StoreEntitySet="EmpLeaveEarly">
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="DateDay" ColumnName="DateDay" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="HRModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="imagebytes" ColumnName="imagebytes" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="DegreeID" ColumnName="DegreeID" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="MilitaryServiceID" ColumnName="MilitaryServiceID" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="ReligionID" ColumnName="ReligionID" />
+                <ScalarProperty Name="ServiceState" ColumnName="ServiceState" />
+                <ScalarProperty Name="ActualHireDate" ColumnName="ActualHireDate" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="MaritalStateID" ColumnName="MaritalStateID" />
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="AddressLocation" ColumnName="AddressLocation" />
+                <ScalarProperty Name="BithDate" ColumnName="BithDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpPenalty">
+            <EntityTypeMapping TypeName="HRModel.EmpPenalty">
+              <MappingFragment StoreEntitySet="EmpPenalty">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Daysnum" ColumnName="Daysnum" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PenID" ColumnName="PenID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpPromotions">
+            <EntityTypeMapping TypeName="HRModel.EmpPromotions">
+              <MappingFragment StoreEntitySet="EmpPromotions">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="JobCurrent" ColumnName="JobCurrent" />
+                <ScalarProperty Name="DegreeCurrent" ColumnName="DegreeCurrent" />
+                <ScalarProperty Name="JobLast" ColumnName="JobLast" />
+                <ScalarProperty Name="DegreeLast" ColumnName="DegreeLast" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpQualification">
+            <EntityTypeMapping TypeName="HRModel.EmpQualification">
+              <MappingFragment StoreEntitySet="EmpQualification">
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="QualID" ColumnName="QualID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpRewards">
+            <EntityTypeMapping TypeName="HRModel.EmpRewards">
+              <MappingFragment StoreEntitySet="EmpRewards">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DaysNum" ColumnName="DaysNum" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="RewardID" ColumnName="RewardID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpSalaryInfo">
+            <EntityTypeMapping TypeName="HRModel.EmpSalaryInfo">
+              <MappingFragment StoreEntitySet="EmpSalaryInfo">
+                <ScalarProperty Name="Taxed" ColumnName="Taxed" />
+                <ScalarProperty Name="Insured" ColumnName="Insured" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="HireSalary" ColumnName="HireSalary" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mission">
+            <EntityTypeMapping TypeName="HRModel.Mission">
+              <MappingFragment StoreEntitySet="Mission">
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="MissionOrTravel" ColumnName="MissionOrTravel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header"><div class="modal-title"> اضافة جزاء </div></div>
+        
+        <div class="modal-body">
+
+            <form class="form-horizontal">
+                <input type="hidden" id="PenaltyTypesID" value="@ViewBag.PenaltyTypes"/>
+
+                <div class="row">
+                    <label class="control-label col-md-2"> تاريخ </label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpPenalty.DateAdded"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> الجزاء </label>
+                    <select class="form-control col-md-8 selectpicker" data-live-search="true" ng-change="getPenaltyValue(EmpPenalty.PenID)" ng-options="x.ID as x.Name for x in PenaltyTypes" ng-model="EmpPenalty.PenID"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> عدد الايام </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpPenalty.Value" ng-model="EmpPenalty.Daysnum" />
+                    <label class="control-label col-md-2"> القيمة </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpPenalty.Daysnum" ng-model="EmpPenalty.Value" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> ملاحظات </label>
+                    <textarea class="form-control col-md-8" ng-model="EmpPenalty.Note"></textarea>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddEmpPenaltyEnd()">حفظ</label>
+        </div>
+    </div>
+
+</div>
+

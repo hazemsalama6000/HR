@@ -1,0 +1,33 @@
+﻿@{ Layout = null;}
+
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpAllowance()">  اضافة بدل </label>
+</div>
+
+<br />
+<div class="row">
+    <input type="hidden" id="EmpAllowances" value="@ViewBag.EmpAllowances" />
+
+    <table class="table table-bordered table-striped table-hover">
+
+        <tr>
+            <th>اسم البدل</th>
+            <th>من</th>
+            <th>الي</th>
+            <th>القيمة</th>
+        </tr>
+
+        <tr ng-repeat="x in EmpAllowances">
+            <td>{{x.Name}}</td>
+            <td>{{x.DateFrom|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.DateTo|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.Value}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpAllowance(x.ID)"> تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpAllowance(x.ID)"> حذف </label>
+            </td>        
+        </tr>
+
+    </table>
+
+</div>

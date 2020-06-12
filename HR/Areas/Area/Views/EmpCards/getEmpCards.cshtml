@@ -1,0 +1,55 @@
+﻿@{ Layout = null;}
+
+
+<div class="row">
+    <label class="btn btn-danger col-md-3"  ng-click="AddEmpCards()"> <span class="glyphicon glyphicon-plus"></span> <strong>اضافة كارت جديد</strong> </label>
+</div>
+<hr />
+<div class="row">
+    <input type="hidden" value="@ViewBag.EmpCards" id="EmpCards" />
+    <table class="table table-bordered table-hover table-striped">
+
+       <tr>
+           <td> نوع الكارت</td>
+           <td> رقم الهوية</td>
+           <td>  ملاحظات</td>
+       </tr>
+
+        <tr ng-repeat="x in EmpCards">
+            <td>{{x.CardType}}</td>
+            <td>{{x.IdentityNumber}}</td>
+            <td>{{x.Note}}</td>
+            <td>
+                <label class="btn btn-success" ng-click="EditEmpCards(x.ID)"> تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpCard(x.ID)"> حذف </label>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

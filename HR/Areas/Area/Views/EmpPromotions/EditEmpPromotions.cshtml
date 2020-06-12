@@ -1,0 +1,39 @@
+﻿
+@{ Layout = null;}
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header"><div class="modal-title">تعديل الترقية</div></div>
+
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="EmpPromotionViewbag" value="@ViewBag.EmpPromotion" />
+                <input type="hidden" ng-model="EmpPromotion.ID"/>
+                <input type="hidden" ng-model="EmpPromotion.EmpID"/>
+
+                <input type="hidden" ng-model="EmpPromotion.DegreeLast" />
+                <input type="hidden" ng-model="EmpPromotion.JobLast" />
+
+
+                <div class="row">
+                    <label class="control-label col-md-3">الدرجة الوظيفية الحالية</label>
+                    <select data-live-search="true" class="form-control selectpicker col-md-6" ng-options="x.ID as x.Name for x in DegreesEmpForm" ng-model="EmpPromotion.DegreeCurrent"></select>
+                </div> 
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3">الوظيفة الحالية</label>
+                    <select data-live-search="true" class="form-control selectpicker col-md-6" ng-options="x.ID as x.Name for x in JobsEmpForm" ng-model="EmpPromotion.JobCurrent"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-3">ملاحظات</label>
+                    <textarea class="form-control col-md-6" ng-model="EmpPromotion.Note"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-primary" ng-click="EditEmpPromotionsEnd()" >حفظ</label>
+        </div>
+    </div>
+</div>

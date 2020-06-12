@@ -1,0 +1,37 @@
+﻿@{ 
+    Layout = null;
+    }
+
+
+
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpAttendance()"> <span class="glyphicon glyphicon-plus"></span> <strong> اضافة حضور وانصراف   </strong> </label>
+</div>
+
+<hr />
+<div class="row">
+    <input type="hidden" id="EmpAttendancesID" value="@ViewBag.EmpAttendances" />
+
+    <table class="table table-bordered table-hover table-hover">
+        <tr>
+            <th>تاريخ</th>
+            <th> حضور ام انصراف </th>
+            <th> من </th>
+            <th> الي </th>
+            <th>الملاحظات</th>
+        </tr>
+
+        <tr ng-repeat="x in EmpAttendances">
+            <td>{{x.DateAdded|date:'yyyy-MM-dd'}}</td>
+            <td>{{x.Name}}</td>
+            <td>{{x.TimeFrom|date:'hh:mm'}}</td>
+            <td>{{x.TimeTo|date:'hh:mm'}}</td>
+            <td>{{x.Note}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpAttendance(x.ID)"> تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpAttendance(x.ID)"> حذف </label>
+            </td>
+        </tr>
+    </table>
+</div>
+

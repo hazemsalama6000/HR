@@ -1,0 +1,47 @@
+﻿
+@{ Layout = null;}
+
+
+
+<div class="modal-dialog">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"> الحالة الوظيفية </div>
+        </div>
+
+        <div class="modal-body">
+            <input type="hidden" id="Def_ServiceStateBag" value="@ViewBag.Def_ServiceStateViewBag" />
+
+            <form class="form-horizontal">
+
+                <div class="row">
+                    <label class="control-label col-md-2"> الاسم </label>
+                    <input  type="text" class="form-control col-md-4" ng-model="Def_ServiceState.Name" />
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="EditDef_ServiceStateEnd()"> تعديل </label>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

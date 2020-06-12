@@ -1,0 +1,41 @@
+﻿@{ Layout = null;}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <input type="hidden" value="@ViewBag.EmpPromotions" id="EmpPromotionsViewBag" />
+        <input type="hidden" value="@ViewBag.maxID" id="maxID" />
+
+        <div class="row">
+            <label class="btn btn-danger col-md-3" ng-click="AddEmpPromotions()"> <strong>اضافة ترقية</strong>   <span class="glyphicon glyphicon-plus"></span> </label>
+        </div>
+        <hr />
+        <div class="row">
+
+            <table class="table table-bordered table-hover table-striped">
+                <tr>
+                    <th>الدرجة الوظيفية السابقة</th>
+                    <th>الدرجة الوظيفية الحالية</th>
+                    <th>الوظيفة السابقة</th>
+                    <th>الوظيفة الحالية</th>
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="x in EmpPromotions">
+                    <td>{{x.DegreeLast}}</td>
+                    <td>{{x.DegreeCurrent}}</td>
+                    <td>{{x.JobLast}}</td>
+                    <td>{{x.JobCurrent}}</td>
+                    <td ng-show="maxID==x.ID">
+                        <label class="btn btn-primary" ng-click="EditEmpPromotions(x.ID)"> تعديل </label>
+                        <label class="btn btn-danger" ng-click="DeleteEmpPromotions(x.ID)"> حذف </label>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+    </div>
+</div>

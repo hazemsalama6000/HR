@@ -1,0 +1,30 @@
+﻿
+@{ Layout = null;}
+
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpLeaveEarly()"> اضافة اذن </label>
+</div>
+<hr />
+<input type="hidden" id="EmpLeaveEarlys" value="@ViewBag.EmpLeaveEarlys" />
+<div class="row">
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th> التاريخ </th>
+            <th>من</th>
+            <th>الي</th>
+            <th>السبب</th>
+        </tr>
+
+        <tr ng-repeat="x in EmpLeaveEarlys"> 
+            <td>{{x.DateDay|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.FromTime|date:'hh:mma'}}</td>
+            <td>{{x.ToTime|date:'hh:mma'}}</td>
+            <td>{{x.reason}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpLeaveEarly(x.ID)">تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpLeaveEarly(x.ID)">حذف </label>
+            </td>
+        </tr>
+
+    </table>
+</div>

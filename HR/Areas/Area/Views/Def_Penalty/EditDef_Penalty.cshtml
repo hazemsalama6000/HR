@@ -1,0 +1,34 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"> اضافة جزاء </div>
+        </div>
+
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="PenaltyType" value="@ViewBag.PenaltyType" />
+                <input type="hidden" ng-model="PenaltyType.ID" />
+                <div class="row">
+                    <label class="control-label col-md-2"> الاسم </label>
+                    <input type="text" class="form-control col-md-8" ng-model="PenaltyType.Name" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> القيمة </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="PenaltyType.Value" ng-model="PenaltyType.Daysnum" />
+                    <label class="control-label col-md-2"> عدد الايام </label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="PenaltyType.Daysnum" ng-model="PenaltyType.Value" />
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="EditDef_PenaltyEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

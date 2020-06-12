@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-controller="Def_AllowanceTypes" style="margin:10px 10px">
+
+<div class="panel panel-default">
+
+    <div class="panel-heading text-center">
+        تعريف البدلات
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <label class="btn btn-danger col-md-3" ng-click="AddAllowanceType()"> اضافة بدل </label>
+                <input type="hidden" id="AllowanceTypes" value="@ViewBag.AllowanceTypes" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="table table-bordered table-hover table-striped">
+
+                    <tr>
+                        <th>البدل</th>
+                        <th>القيمة</th>
+                    </tr>
+
+                    <tr ng-repeat="x in AllowanceTypes">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.Value}}</td>
+                        <td>
+                            <label class="btn btn-primary" ng-click="EditAllowanceType(x.ID)"> تعديل </label>
+                            <label class="btn btn-danger" ng-click="DeleteAllowanceType(x.ID)"> حذف </label>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+    var app = angular.module('Hr',[]);
+
+    app.controller("Def_AllowanceTypes", function ($scope,$compile,$http,$filter,$window) {
+        putMenu();
+        $scope.AllowanceTypes= angular.fromJson( $("#AllowanceTypes").val() );
+    
+        $scope.AddAllowanceType = function () {
+            $scope.AllowanceType = {};
+            $http.get("/Area/Def_AllowanceTypes/AddAllowanceType").then(function (response) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(response.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddAllowanceTypeEnd = function () {
+
+            $http.post("/Area/Def_AllowanceTypes/AddAllowanceTypeEnd", $scope.AllowanceType).then(function (response) {
+                $scope.AllowanceTypes = angular.fromJson(response.data.result);
+                alert(response.data.msg);
+            });
+
+        }
+
+
+        $scope.EditAllowanceType = function (ID) {
+            $http.get("/Area/Def_AllowanceTypes/EditAllowanceType?ID=" + ID).then(function (response) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(response.data);
+                $compile($el)($scope);
+                $scope.AllowanceType = angular.fromJson($("#AllowanceType").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditAllowanceTypeEnd = function () {
+
+            $http.post("/Area/Def_AllowanceTypes/EditAllowanceTypeEnd", $scope.AllowanceType).then(function (response) {
+                $scope.AllowanceTypes = angular.fromJson(response.data.result);
+                alert(response.data.msg);
+            });
+        }
+
+
+        $scope.DeleteAllowanceType = function (ID) {
+            $http.get("/Area/Def_AllowanceTypes/DeleteAllowanceType?ID="+ID).then(function (response) {
+                $scope.AllowanceTypes = angular.fromJson(response.data.result);
+                alert(response.data.msg);
+            });
+
+        }
+
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

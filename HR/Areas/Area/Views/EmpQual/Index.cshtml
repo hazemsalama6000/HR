@@ -1,0 +1,43 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+
+<input type="hidden" id="qua" value="@ViewBag.AllQualification" />
+
+
+<div>
+
+    <div class="row">
+
+        <label class="btn btn-danger col-md-3 btn-sm" ng-click="AddEmpQualPopup()" > <strong>اضافة مؤهل</strong> <span class="glyphicon glyphicon-plus"></span></label>
+    </div>
+    <hr>
+    <div class="row">
+        <table class="table table-bordered table-striped" >
+         
+              <tr class="primary">
+                 <th class="text-center"><bold>المؤهل</bold></th>
+                 <th class="text-center"><bold>معهد</bold></th>
+                 <th class="text-center"><bold>من تاريخ</bold></th>
+                 <th class="text-center"><bold>الي تاريخ</bold></th>
+            </tr>
+
+            <tr ng-repeat="x in Qualifications" class="text-center">
+                <td><bold>{{x.Name}}</bold></td>
+                <td><bold>{{x.University}}</bold></td>
+                <td><bold>{{x.fromDate|date:'dd-MM-yyyy'}}</bold></td>
+                <td><bold>{{x.toDate|date:'dd-MM-yyyy'}}</bold></td>
+
+                <td><label ng-click="EditEmpQual(x.ID)" class="btn btn-success">تعديل</label>
+                <label ng-click="DeleteEmpQual(x.ID)" class="btn btn-danger">حذف</label></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+

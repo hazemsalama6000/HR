@@ -1,0 +1,35 @@
+﻿
+@{ Layout = null;}
+
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpRewards()"><span class="glyphicon glyphicon-plus"></span> <strong> اضافة مكافئات </strong></label>
+</div>
+
+<hr />
+
+<div class="row">
+    <input type="hidden" id="EmpRewards" value="@ViewBag.EmpRewards" />
+    <table class="table table-bordered table-hover table-striped table-responsive">
+        <tr>
+            <th> التاريخ </th>
+            <th>اسم المكافئة </th>
+            <th> عدد الايام </th>
+            <th> القيمة </th>
+            <th> ملاحظات </th>
+
+        </tr>
+
+        <tr ng-repeat="x in EmpRewards">
+            <td>{{x.DateAdded|date:'yyyy-MM-dd'}}</td>
+            <td>{{x.Name}}</td>
+            <td>{{x.DaysNum}}</td>
+            <td>{{x.Value}}</td>
+            <td>{{x.Note}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpRewards(x.ID)"> تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpRewards(x.ID)"> حذف </label>
+            </td>
+        </tr>
+    </table>
+
+</div>

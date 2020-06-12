@@ -1,0 +1,68 @@
+﻿@{ 
+    Layout = null;
+}
+
+<div>
+
+    <div class="row">
+        <label class="btn btn-danger btn-sm col-md-3" ng-click="AddMission()"> <strong>اضافة سفريات ومأموريات</strong><span class="glyphicon glyphicon-plus"></span></label>
+    </div>
+    <hr />
+    <div class="row">
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    سفريات ومأموريات
+                </th>
+
+                <th>
+                    من تاريخ
+                </th>
+
+                <th>
+                    الي تاريخ
+                </th>
+
+                <th>
+                    ملاحظات
+                </th>
+            </tr>
+
+            <tr ng-repeat="x in Missions">
+                <td ng-if="x.MissionOrTravel==true" >
+                سفريات
+                </td>
+                <td ng-if="x.MissionOrTravel==false">
+                 مأموريات
+                </td>
+
+                <td>{{x.fromDate|date:'dd-MM-yyyy'}}</td>
+                <td>{{x.toDate|date:'dd-MM-yyyy'}}</td>
+                <td>{{x.Note}}</td>
+                <td>
+                    <label class="btn btn-success" ng-click="EditMission(x.ID)">تعديل</label>
+                    <label class="btn btn-danger" ng-click="DeleteMission(x.ID)">حذف</label>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title"> <strong> تعديل المكافئة </strong>  </div>
+        </div>
+
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden" id="RewardTypesID" value="@ViewBag.RewardTypes" />
+                <input type="hidden" id="EmpRewardID" value="@ViewBag.EmpReward"/>
+
+                <input type="hidden" ng-model="EmpReward.ID" />
+                <div class="row">
+                    <label class="control-label col-md-2"> تاريخ</label>
+                    <input type="date" class="form-control col-md-8" ng-model="EmpReward.DateAdded"/>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> العلاوة </label>
+                    <select data-live-search="true" class="form-control col-md-8 selectpicker" ng-change="getRewardValue(EmpReward.RewardID)"  ng-options="x.ID as x.Name for x in RewardTypes" ng-model="EmpReward.RewardID"></select>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2">عدد الايام</label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpReward.Value" ng-model="EmpReward.DaysNum"/>
+                    <label class="control-label col-md-2">القيمة</label>
+                    <input type="text" class="form-control col-md-3" ng-disabled="EmpReward.DaysNum" ng-model="EmpReward.Value" />
+                </div>
+                <br />
+                <div class="row">
+                    <label class="control-label col-md-2"> ملاحظات </label>
+                    <textarea type="text" class="form-control col-md-8" ng-model="EmpReward.Note"></textarea>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="EditEmpRewardsEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

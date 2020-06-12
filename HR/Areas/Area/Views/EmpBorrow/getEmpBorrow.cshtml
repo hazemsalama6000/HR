@@ -1,0 +1,66 @@
+﻿@{ 
+    Layout = null;
+ }
+
+<input type="hidden" id="EmpBorrowsID" value="@ViewBag.EmpBorrows"/>
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpBorrow()"> اضافة سلفة </label>
+</div>
+
+<br />
+
+<div class="row">
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>تاريخ السلفة</th>
+            <th>تاريخ بداية السداد</th>
+            <th> قيمة السلفة</th>
+            <th>قيمة القسط</th>
+            <th>عدد الاقساط</th>
+            <th> المسدد </th>
+        </tr>
+
+        <tr ng-repeat="x in EmpBorrows">
+            <td>{{x.Dateorder|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.payoffDate|date:'dd-MM-yyyy'}}</td>
+            <td>{{x.BorrowVal}}</td>
+            <td>{{x.InstallmentVal}}</td>
+            <td>{{x.Installmentscount}}</td>
+            <td>{{x.payoffValue}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpBorrow(x.ID)"> تعديل</label>
+                <label class="btn btn-danger" ng-click="DeleteEmpBorrow(x.ID)"> حذف</label>
+
+            </td>
+        </tr>
+
+
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

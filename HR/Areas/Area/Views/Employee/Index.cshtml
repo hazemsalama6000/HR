@@ -1,0 +1,1223 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@*<script src="~/Areas/Area/Script/Employee/Employee.js"></script>*@
+<div class="">
+
+    <div class="row" ng-controller="Employeee" style="margin-top:-10px;">
+
+        <div class="col-md-9" style="margin-right:60px;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><div class="panel-title text-center"> <h4><span class="glyphicon glyphicon-user"></span> <strong> البيانات الوظيفية </strong></h4> </div></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <form class="form-horizontal" role="form">
+                                    <input type="hidden" id="EmpIDDD" ng-model="Employee.ID" />
+
+                                    <div class="row">
+                                        <label class="control-label col-md-2">الاسم</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group ui-widget">
+                                                <input type="text" class="form-control" id="gg" ng-model="Employee.Name"/>
+                                                <div class="input-group-btn">
+                                                    <div class="btn btn-danger" ng-click="searchchange()">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="row">
+                                        <label class="control-label col-md-2">الكود</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" ng-model="Employee.Code" />
+                                                <div class="input-group-btn">
+                                                    <div class="btn btn-danger" ng-click="searchByCode()">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div class="row">
+                                        <label class="control-label col-md-2">تاريخ التعيين</label>
+                                        <div class="col-md-3"> <input type="date" class="form-control" ng-model="Employee.HireDate" /> </div>
+
+                                        <label class="control-label col-md-2">تاريخ التعيين الفعلي</label>
+                                        <div class="col-md-3"> <input type="date" class="form-control" ng-model="Employee.ActualHireDate" /> </div>
+                                    </div>
+
+                                    <br />
+                                    
+                                    <div class="row">
+                                        <label class="control-label col-md-2">الوظيفة</label>
+                                        <div class="col-md-3">
+                                            <select data-live-search="true" ng-disabled="Employee.ID!=null" class="form-control selectpicker" ng-options="x.ID as x.Name for x in JobsEmpForm" ng-model="Employee.JobID"></select>
+                                        </div>
+
+                                        <label class="control-label col-md-2">الحالة الوظيفية </label>
+                                        <div class="col-md-3"> <select data-live-search="true"  class="form-control selectpicker" id="service" ng-options="x.ID as x.Name for x in ServiceState" ng-model="Employee.ServiceState"></select> </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <label class="control-label col-md-2"> الدرجة الوظيفية </label>
+                                        <div class="col-md-3">
+                                            <select data-live-search="true" ng-disabled="Employee.ID!=null" class="form-control selectpicker" ng-options="x.ID as x.Name for x in DegreesEmpForm" ng-model="Employee.DegreeID"></select>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                     <div class="col-md-2 text-center"> <a style="border:1px solid #D9534F" href="#" class="list-group-item" ng-click="EmpPersonalData()"><span class="glyphicon glyphicon-book"></span><strong> البيانات الشخصية </strong></a> </div>  
+                     <div class="col-md-2 text-center"> <a style="border:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpCards()"><span class="glyphicon glyphicon-book"></span><strong> المستندات الشخصية </strong></a> </div>  
+                     <div class="col-md-2 text-center"> <a style="border:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpSalaryInfo()"><span class="glyphicon glyphicon-book"></span><strong> بيانات المرتب </strong></a> </div>   
+                     <div class="col-md-2 text-center"> <a style="border:1px solid #D9534F" href="#" class="list-group-item" ng-click="EmpQual()" ><span class="glyphicon glyphicon-book"></span><strong> المؤهلات</strong></a> </div>    
+                     <div class="col-md-2 text-center"> <a style="border:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpJobs()"><span class="glyphicon glyphicon-book"></span><strong> الاعمال المسندة </strong></a> </div>     
+                </div>
+            </div>
+
+            <br />
+
+           
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="Empdetails" style="margin:10px 10px 10px 10px; ">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-1">
+                <div style="border:1px solid #D1D3D4; width:300px; height:240px; background-color:#F5F5F5;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="ss">
+                                <img src="~/UploadImages/default.jpg" class="img-rounded" alt="Cinque Terre" style="width:165px; height:140px; margin-right:70px;margin-top:50px;">
+                            </div>
+
+                            <img ng-show="hidee" src="~/UploadImages/default.jpg" class="img-rounded" alt="Cinque Terre" style="width:165px; height:140px; margin-right:70px;margin-top:50px;">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-click="Upload()" class="btn btn-danger glyphicon glyphicon-upload col-md-3" style="margin-right:84px;"> </div>
+                        <input type="file" id="EmpImg" ng-change="filechanged" ng-model="Employee.EmpImg"  style="display:none;"/>
+                        <div ng-click="DeleteImg()" class="btn btn-default glyphicon glyphicon-remove col-md-3"></div>
+                    </div>
+                </div>
+                <br /> 
+            
+                <div class="list-group" style="width:300px;background-color:#F2F4F6;">
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpAttendance()"><span class="glyphicon glyphicon-book"></span> <strong> الحضور والانصراف </strong> </a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getMission()"><span class="glyphicon glyphicon-book"></span><strong> السفريات والمأموريات </strong></a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpPromotions()"><span class="glyphicon glyphicon-book"></span><strong> الترقيات </strong></a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpElawa()"> <span class="glyphicon glyphicon-book"></span><strong> العلاوات </strong> </a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpPenalty()"><span class="glyphicon glyphicon-book"></span> <strong> الخصومات او الجزائات </strong> </a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpRewards()"><span class="glyphicon glyphicon-book"></span> <strong> المكافئات </strong> </a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpAllowance()"> <span class="glyphicon glyphicon-book"></span><strong> البدلات </strong> </a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpLeaveEarly()"><span class="glyphicon glyphicon-book"></span><strong> اذونات </strong></a>
+                    <a style="border-top:1px solid #D9534F" href="#" class="list-group-item" ng-click="getEmpBorrow()"><span class="glyphicon glyphicon-book"></span><strong> سلف  </strong></a>
+
+                </div>
+
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        
+
+        var app = angular.module("Hr", []);
+        app.controller("Employeee", function ($scope, $http, $compile, $filter, $window) {
+            putMenu();
+            $scope.Employee = {};
+            $scope.hidee = false;
+
+            $scope.Nationalities = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Nationality))');
+            $scope.JobsEmpForm = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Jobs))');
+            $scope.Maritalstatus = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Maritalstatus))');
+            $scope.Religion = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Religion))');
+            $scope.ServiceState = JSON.parse('@Html.Raw(Json.Encode(ViewBag.ServiceState))');
+            $scope.Gender = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Gender))');
+            $scope.MilitaryService = JSON.parse('@Html.Raw(Json.Encode(ViewBag.MilitaryService))');
+            $scope.DegreesEmpForm = JSON.parse('@Html.Raw(Json.Encode(ViewBag.Degrees))');
+            
+
+            $scope.Upload = function() {
+                $("#EmpImg").click();
+            }
+
+            angular.element("#EmpImg").on('change', function () {
+              
+                    var file = $("#EmpImg").get(0).files;
+                    var data = new FormData;
+                    data.append("EmpImg", file[0]);
+                    data.append("EmpID", $scope.Employee.ID);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Area/Employee/UploadImg',
+                        data: data,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $scope.hidee = false;
+                            $scope.$apply();
+                            $("#ss").empty();
+                            var d = new Date();
+                            $("#ss").html('<img src="/Area/Employee/displayImage?EmpID='+$scope.Employee.ID+'&d='+d.getMilliseconds()+'"'+' class="img-rounded" alt="Cinque Terre" style="width:165px; height:140px; margin-right:70px;margin-top:50px;">');
+                            if (data.action == "no") {
+                                alert(data.msg);
+                            }
+                        }
+                    });
+            });
+
+         
+
+           $scope.DeleteImg = function () {
+
+               $http.get("/Area/Employee/DeleteImg?EmpID="+$scope.Employee.ID).then(function (res) {
+                   $scope.hidee = true;
+                   $("#ss").empty();
+               });
+            }
+
+            $scope.$watch(function () {
+                $('.selectpicker').selectpicker('refresh');
+            });
+
+
+            $scope.save = function () {
+                $http.post("/Employee/Save", $scope.Employee).then(function (response) {
+                    $scope.searchchange();
+                    alert(response.data.res);
+                });
+            }
+
+
+            $scope.new = function () {
+                $scope.Employee = {};
+            }
+
+            $scope.searchchange = function () {
+                $.get("/Area/Employee/getEmployee?Name=" + $scope.Employee.Name, function (response) {
+                    if (response == "no") {
+                        $scope.Employee = {};
+                        $scope.$apply();
+                        $("#Empdetails").empty();
+                        $scope.EmpPersonalData();
+                    }
+                    else {
+                        var s = angular.fromJson(response);
+                        $scope.Employee = s.Empp;
+                        $scope.Employee.HireDate = new Date($filter('date')(s.HireDate, 'MM/dd/yyyy'));
+                        $scope.Employee.ActualHireDate = new Date($filter('date')(s.ActualHireDate, 'MM/dd/yyyy'));
+                        $scope.Employee.BithDate = new Date($filter('date')(s.BithDate, 'MM/dd/yyyy'));
+                        $("#Empdetails").empty();
+                        $scope.$apply();
+                        $scope.EmpPersonalData();
+                        if ($scope.Employee.imagebytes != null) {
+                            $scope.hidee = false;
+                            $("#ss").empty();
+                            var d = new Date();
+                            $("#ss").html('<img src="/Area/Employee/displayImage?EmpID=' + $scope.Employee.ID + '&d=' + d.getMilliseconds()+'"' + ' class="img-rounded" alt="Cinque Terre" style="width:165px; height:140px; margin-right:70px;margin-top:50px;">');
+                        }
+                        else {
+                            $("#ss").empty();
+                            $scope.hidee = true;
+                        }
+                    }
+                });
+            }
+
+            $scope.searchByCode = function () {
+                $.get("/Area/Employee/getEmpByCode?Code=" + $scope.Employee.Code, function (response) {
+                    $scope.Employee = response;
+                    $scope.Employee.HireDate = new Date($filter('date')(response.HireDate, "MM/dd/yyyy"));
+                    $scope.Employee.ActualHireDate = new Date($filter('date')(response.ActualHireDate, "MM/dd/yyyy"));
+                    $scope.Employee.BithDate = new Date($filter('date')(response.BithDate, "MM/dd/yyyy"));
+                    $("#Empdetails").empty();
+                    //$scope.$apply();
+                });
+            }
+
+            $scope.EmpPersonalData = function () {
+                
+                $http.get("/Area/Employee/EmpPersonalData").then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                });
+
+            }
+
+            $scope.EmpPersonalData();
+
+
+            //--------------------EmpQual------------------------------------//
+            $scope.EmpQual = function () {
+                if ($scope.Employee.ID != null) {
+                    $http.get("/Area/EmpQual/Index?ID=" + $scope.Employee.ID).then(function (response) {
+                        $("#Empdetails").empty();
+                        var $el = $("#Empdetails").html(response.data);
+
+                        var va = $("#qua").val();
+                        va = angular.fromJson(va);
+
+                        $scope.Qualifications = va;
+                        $compile($el)($scope);
+                        $scope.$apply();
+                    });
+                }
+            }
+
+
+            $scope.AddEmpQualPopup = function () {
+                $scope.EmpQualification = {};
+                $scope.EmpQualification.EmpID = $scope.Employee.ID;
+                $.get("/Area/EmpQual/AddEmpQualPopup", function (data) {
+                    $("#myModal").empty();
+                    var $el = $("#myModal").html(data);
+                    $compile($el)($scope);
+                    $("#myModal").modal("show");
+                    var va = $("#QualificationviewBag").val();
+                    va = angular.fromJson(va);
+                    $scope.QualificationTypes = va;
+                });
+            }
+
+            $scope.AddEmpQual = function () {
+                //$scope.EmpQualification.fromDate= new Date($filter('date')($scope.EmpQualification.fromDate, 'MM/dd/yyyy'));
+                //$scope.EmpQualification.toDate = new Date($filter('date')($scope.EmpQualification.toDate, 'MM/dd/yyyy'));
+
+                $http.post("/Area/EmpQual/AddEmpQual", $scope.EmpQualification).then(function (response) {
+                    $scope.EmpQual();
+                    alert(response.data.res);
+                });
+
+            }
+
+            $scope.getEmpquali = function (ID) {
+
+                $http.get("/Area/EmpQual/getEmpquali?ID=" + ID).then(function (response) {
+                    var s = angular.fromJson(response.data);
+                    $scope.EmpQualification = s;
+                    $scope.EmpQualification.fromDate = new Date($filter('date')(s.fromDate, 'MM/dd/yyyy'));
+                    $scope.EmpQualification.toDate = new Date($filter('date')(s.toDate, 'MM/dd/yyyy'));
+                    $scope.$apply();
+                });
+            }
+
+
+            $scope.EditEmpQual = function (ID) {
+                $scope.EmpQualification = {};
+                $.get("/Area/EmpQual/EditEmpQual", function (data) {
+                    $("#myModal").empty();
+                    var $el = $("#myModal").html(data);
+                    $compile($el)($scope);
+                    $scope.getEmpquali(ID);
+                    $("#myModal").modal("show");
+                    var va = $("#QualificationviewBag").val();
+                    va = angular.fromJson(va);
+                    $scope.QualificationTypes = va;
+
+                });
+            }
+
+
+            $scope.EditEmpQualEnd = function () {
+                //$scope.EmpQualification.fromDate = new Date($filter('date')($scope.EmpQualification.fromDate, 'MM/dd/yyyy'));
+                //$scope.EmpQualification.toDate = new Date($filter('date')($scope.EmpQualification.toDate, 'MM/dd/yyyy'));
+
+                $http.post("/Area/EmpQual/EditEmpQualEnd", $scope.EmpQualification).then(function (response) {
+                    $scope.EmpQual();
+                    alert(response.data.msg);
+                });
+
+            }
+
+            $scope.DeleteEmpQual = function (ID) {
+                $.post("/Area/EmpQual/DeleteEmpQual?ID=" + ID, function (data) {
+                    $scope.EmpQual();
+                    alert(data.msg);
+                });
+            }
+
+
+            //----------------------------Mission------------------------------//
+
+            $scope.EmpMissions = function () {
+                $scope.Missions = {};
+                $http.get("/Area/Mission/EmpMissions?EmpID=" + $scope.Employee.ID).then(function (response) {
+                    var v = angular.fromJson(response.data);
+                    $scope.Missions = v;
+                    //$scope.$apply();
+                });
+            }
+
+
+            $scope.getMission = function () {
+                $http.get("/Area/Mission/Index?ID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $scope.EmpMissions();
+                    $compile($el)($scope);
+                });
+            }
+
+            $scope.AddMission = function () {
+                $scope.Mission = {};
+                $scope.Mission.EmpID = $scope.Employee.ID;
+
+                $http.get("/Area/Mission/AddMission").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $("#myModal").modal("show");
+                });
+            }
+
+            $scope.AddMissionEnd = function () {
+                //$scope.Mission.fromDate = new Date($filter('date')($scope.Mission.fromDate, 'MM/dd/yyyy'));
+                //$scope.Mission.toDate = new Date($filter('date')($scope.Mission.toDate, 'MM/dd/yyyy'));
+
+                $http.post("/Area/Mission/AddMissionEnd", $scope.Mission).then(function (response) {
+                    $scope.EmpMissions();
+                    alert(response.data.msg);
+                });
+            }
+
+
+            $scope.EmpMission = function (ID) {
+                $http.get("/Area/Mission/EmpMission?MissionID=" + ID).then(function (response) {
+                    var va = angular.fromJson(response.data);
+
+                    $scope.Mission = va;
+                    $scope.Mission.EmpID = $scope.Employee.ID;
+                    $scope.Mission.fromDate = new Date($filter('date')(va.fromDate, 'MM/dd/yyyy'));
+                    $scope.Mission.toDate = new Date($filter('date')(va.toDate, 'MM/dd/yyyy'));
+                    //$scope.$apply();
+                });
+            }
+
+            $scope.EditMissionEnd = function () {
+                $http.post("/Area/Mission/EditMissionEnd", $scope.Mission).then(function (response) {
+                    $scope.EmpMissions();
+                    alert(response.data.msg);
+                });
+            }
+
+
+            $scope.EditMission = function (ID) {
+                $scope.Mission = {};
+                $http.get("/Area/Mission/EditMission").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpMission(ID);
+                    $("#myModal").modal("show");
+                });
+            }
+
+
+            $scope.DeleteMission = function (ID) {
+
+                $http.get("/Area/Mission/DeleteMission?MissionID=" + ID).then(function (response) {
+                    $scope.EmpMissions();
+                    alert(response.data.msg);
+                });
+            }
+
+            //---------------------------------EmpJobs--------------------------------//
+
+            $scope.getEmpJobs = function () {
+                $http.get("/Area/EmpJobs/getEmpJobs?EmpID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    var s = $("#Jobs").val();
+                    var ss = angular.fromJson(s);
+                    $scope.Jobs = ss;
+                });
+            }
+
+            $scope.useDate = $window.useDate;
+
+            $scope.useDate = function (toDate) {
+                toDate = new Date($filter('date')(toDate, 'MM/dd/yyyy'));
+                var Datenow = new Date($filter('date')(Date.now(), 'MM/dd/yyyy'));
+                return toDate >= Datenow;
+            }
+
+            $scope.AddEmpJobs = function () {
+
+                $scope.EmpJobs = {};
+                $scope.EmpJobs.EmpID = $scope.Employee.ID;
+
+                $http.get("/Area/EmpJobs/AddEmpJobs").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    var v = angular.fromJson($("#jobViewbag").val());
+                    $scope.JobsNames = v;
+                    $("#myModal").modal("show");
+                });
+            }
+
+            $scope.AddEmpJobsEnd = function () {
+
+                $http.post("/Area/EmpJobs/AddEmpJobsEnd", $scope.EmpJobs).then(function (response) {
+                    $scope.getEmpJobs();
+                    alert(response.data.msg);
+                });
+            }
+
+
+            $scope.DeleteJob = function (ID) {
+                $http.get("/Area/EmpJobs/DeleteJob?ID=" + ID).then(function (response) {
+                    $scope.getEmpJobs();
+                    alert(response.data.msg);
+                });
+            }
+
+            $scope.EditEmpJobs = function (ID) {
+                $scope.EmpJobs = {};
+                $http.get("/Area/EmpJobs/EditEmpJobs?ID=" + ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.JobsList = angular.fromJson($("#JobsList").val());
+                    var va = angular.fromJson($("#ObjectEdit").val());
+                    $scope.EmpJobs = va;
+                    $scope.EmpJobs.fromDate = new Date($filter('date')(va.fromDate, 'MM/dd/yyyy'));
+                    $scope.EmpJobs.toDate = new Date($filter('date')(va.toDate, 'MM/dd/yyyy'));
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpJobsEnd = function () {
+                $http.post("/Area/EmpJobs/EditEmpJobsEnd", $scope.EmpJobs).then(function (response) {
+                    $scope.getEmpJobs();
+                    alert(response.data.msg);
+                });
+            }
+            //----------------------------------EmpCards------------------------------------//
+
+            $scope.UploadCard = function () {
+                $("#Cardimage").click();
+            }
+            
+
+            $scope.getEmpCards = function () {
+                $scope.EmpCards = {};
+
+                $http.get("/Area/EmpCards/getEmpCards?EmpID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $scope.EmpCards = angular.fromJson($("#EmpCards").val());
+                    $compile($el)($scope);
+                });
+            }
+
+            $scope.AddEmpCards = function () {
+                $scope.EmpCard = {};
+                $scope.EmpCard.EmpID = $scope.Employee.ID;
+                $scope.EmpCard.IdentityNumber = '';
+                $scope.EmpCard.Note = '';
+                $http.get("/Area/EmpCards/AddEmpCards").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.CardTypes = angular.fromJson($("#CardTypes").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+
+            $scope.AddEmpCardsEnd = function () {
+
+                var file = $("#Cardimage").get(0).files;
+                var dataa = new FormData;
+                dataa.append("ID", $scope.EmpCard.ID);
+                dataa.append("EmpID", $scope.EmpCard.EmpID);
+                dataa.append("CardTypeID", $scope.EmpCard.CardTypeID);
+                dataa.append("IdentityNumber", $scope.EmpCard.IdentityNumber);
+                dataa.append("Note", $scope.EmpCard.Note);
+                dataa.append("Cardimage", file[0]);
+             
+                $.ajax({
+                    type: 'POST',
+                    url: '/Area/EmpCards/AddEmpCardsEnd',
+                    data: dataa,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#ImageCon").empty();
+                        var d = new Date();
+                        $("#ImageCon").html('<img src="/Area/EmpCards/displayImage?CardID=' + data.CardID + '&d=' + d.getMilliseconds() + '"' + ' class="img-rounded"  style="width:150px; height:150px;">');
+                        if (data.action == "no") {
+                            alert(data.msg);
+                        }
+                        $scope.getEmpCards();
+                    }
+                });
+
+            }
+
+
+            $scope.EditEmpCards = function (ID) {
+                $scope.EmpCard = {};
+                $scope.EmpCard.IdentityNumber = '';
+                $scope.EmpCard.Note = '';
+
+                $http.get("/Area/EmpCards/EditEmpCards?EmpCardID=" + ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.CardTypes = angular.fromJson($("#CardTypes").val());
+                    $scope.EmpCard = angular.fromJson($("#EmpCardEntity").val());
+                    $("#myModal").modal('show');
+                    //$("#ImageCon").empty();
+                    var d = new Date();
+                    $("#ImageCon").html('<img src="/Area/EmpCards/displayImage?CardID=' + $scope.EmpCard.ID + '&d=' + d.getMilliseconds() + '"' + ' class="img-rounded"  style="width:150px; height:150px;">');
+                });
+            }
+
+            $scope.DeleteImage = function () {
+                $http.get("/Area/EmpCards/DeleteImage?CardID=" + $scope.EmpCard.ID).then(function (res) {
+                    $("#ImageCon").empty();
+                    $("#ImageCon").html('<img height="150px" width="150px" src="/UploadImages/default.jpg" />');
+                });
+            }
+
+            $scope.EditEmpCardsEnd = function () {
+
+                var file = $("#Cardimage").get(0).files;
+                var dataa = new FormData;
+                dataa.append("ID", $scope.EmpCard.ID);
+                dataa.append("EmpID", $scope.EmpCard.EmpID);
+                dataa.append("CardTypeID", $scope.EmpCard.CardTypeID);
+                dataa.append("IdentityNumber", $scope.EmpCard.IdentityNumber);
+                dataa.append("Note", $scope.EmpCard.Note);
+                dataa.append("Cardimage", file[0]);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Area/EmpCards/EditEmpCardsEnd',
+                    data: dataa,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#ImageCon").empty();
+                        var d = new Date();
+                        $("#ImageCon").html('<img src="/Area/EmpCards/displayImage?CardID=' + $scope.EmpCard.ID + '&d=' + d.getMilliseconds() + '"' + ' class="img-rounded"  style="width:150px; height:150px;">');
+                        if (data.action == "no") {
+                            alert(data.msg);
+                        }
+                        $scope.getEmpCards();
+                    }
+                });
+            }
+
+            $scope.DeleteEmpCard = function (ID) {
+                $http.get("/Area/EmpCards/DeleteEmpCard?ID=" + ID).then(function (response) {
+                    $scope.getEmpCards();
+                    alert(response.data.msg);
+                });
+
+            }
+
+            //---------------------getEmpPromotions--------------------------//
+
+            $scope.getEmpPromotions = function () {
+                $scope.EmpPromotion = {};
+
+                $http.get("/Area/EmpPromotions/getEmpPromotions?EmpID="+$scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $scope.EmpPromotions = angular.fromJson( $("#EmpPromotionsViewBag").val() );
+                    $compile($el)($scope);
+                    $scope.maxID = $("#maxID").val();
+
+                });
+            }
+
+            $scope.AddEmpPromotions = function () {
+                $scope.EmpPromotion.EmpID = $scope.Employee.ID;
+                $http.get("/Area/EmpPromotions/AddEmpPromotions").then(function (response) {
+                    $("#myModal").empty();
+                    $el=$("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $("#myModal").modal("show");
+                });
+            }
+
+            $scope.AddEmpPromotionsEnd = function () {
+                $http.post("/Area/EmpPromotions/AddEmpPromotionsEnd", $scope.EmpPromotion).then(function (response) {
+                    alert(response.data.msg);
+                    if (response.data.action == 'yes') {
+                        $scope.Employee.DegreeID=$scope.EmpPromotion.DegreeCurrent;
+                        $scope.Employee.JobID = $scope.EmpPromotion.JobCurrent;
+                        $scope.getEmpPromotions();
+                        $scope.$apply();
+                    }
+                });
+            }
+
+            $scope.EditEmpPromotions = function (ID) {
+                $http.get("/Area/EmpPromotions/EditEmpPromotions?ID="+ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpPromotion=angular.fromJson($("#EmpPromotionViewbag").val());
+                    $("#myModal").modal('show');
+                });
+            }
+            $scope.EditEmpPromotionsEnd = function () {
+                $http.post("/Area/EmpPromotions/EditEmpPromotionsEnd", $scope.EmpPromotion).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.Employee.DegreeID = $scope.EmpPromotion.DegreeCurrent;
+                    $scope.Employee.JobID = $scope.EmpPromotion.JobCurrent;
+                    $scope.getEmpPromotions();
+                    $scope.$apply();
+                });
+            }
+            $scope.DeleteEmpPromotions = function (ID) {
+                $http.post("/Area/EmpPromotions/DeleteEmpPromotions?ID=" + ID).then(function (response) {
+                    if (response.data.action == "yes") {
+                        $scope.Employee.DegreeID = response.data.DegreeLast;
+                        $scope.Employee.JobID = response.data.JobLast;
+                        alert(response.data.msg);
+                        $scope.getEmpPromotions();
+                        $scope.$apply();
+                    }
+                });
+
+            }
+            
+
+            //--------------------get salary info------------------------------//
+            $scope.getEmpSalaryInfo = function () {
+                $scope.EmpSalaryInfo = {};
+                $http.get("/Area/EmpSalaryInfo/getEmpSalaryInfo?EmpID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpSalaryInfo = angular.fromJson($("#EmpSalaryInfoViewBag").val());
+                });
+            }
+
+            $scope.SaveEmpSalaryInfo = function () {
+                $scope.EmpSalaryInfo.EmpID = $scope.Employee.ID;
+
+                $http.post("/Area/EmpSalaryInfo/SaveEmpSalaryInfo", $scope.EmpSalaryInfo).then(function (response) {
+                    alert(response.data.msg);
+                });
+            }
+            //-----------------------EmpElawa-------------------------------//
+
+
+            $scope.getElawaTypeData = function () {
+                $http.get("/Area/EmpElawa/getElawaTypeData?ID=" + $scope.EmpElawa.ElawaID).then(function (response) {
+                    $scope.EmpElawa.SalaryPercent = response.data.Percent;
+                    $scope.EmpElawa.Value = response.data.value;
+                });
+
+            }
+
+            $scope.getEmpElawa = function () {
+                $http.get("/Area/EmpElawa/getEmpElawa?ID="+$scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpElawas = angular.fromJson( $("#EmpElawaID").val() );
+                });
+            }
+
+            $scope.AddEmpElawa = function () {
+                $scope.EmpElawa = {};
+                $http.get("/Area/EmpElawa/AddEmpElawa").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.ElawaTypes = angular.fromJson($("#ElawaTypesID").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.AddEmpElawaEnd = function () {
+                $scope.EmpElawa.EmpID = $scope.Employee.ID;
+                $http.post("/Area/EmpElawa/AddEmpElawaEnd", $scope.EmpElawa).then(function (response) {
+                    $scope.getEmpElawa();
+                    alert(response.data.msg);
+                });
+
+            }
+
+            $scope.DeleteEmpElawa = function (ID) {
+                $http.get("/Area/EmpElawa/DeleteEmpElawa?ID="+ID).then(function (response) {
+                    $scope.getEmpElawa();
+                    alert(response.data.msg);
+                });
+            }
+
+
+            $scope.EditEmpElawa = function (ID) {
+                $scope.EmpElawa = {};
+                $http.get("/Area/EmpElawa/EditEmpElawa?ID="+ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el=$("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpElawa = angular.fromJson( $("#EmpElawaIDEdit").val() );
+                    $scope.EmpElawa.DateAdded = new Date($filter('date')($scope.EmpElawa.DateAdded, "MM/dd/yyyy"));
+                    $scope.ElawaTypes = angular.fromJson($("#ElawaTypesID").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpElawaEnd = function () {
+                $http.post("/Area/EmpElawa/EditEmpElawaEnd", $scope.EmpElawa).then(function (response) {
+                    $scope.getEmpElawa();
+                    alert(response.data.msg);
+                });
+            }
+            //-----------------------Def_RewardTypes-------------------------//
+            $scope.getEmpRewards = function () {
+                $http.get("/Area/EmpRewards/getEmpRewards?ID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpRewards = angular.fromJson($("#EmpRewards").val());
+                });
+            }
+
+            $scope.AddEmpRewards = function () {
+                $scope.EmpReward = {};
+                $scope.EmpReward.EmpID = $scope.Employee.ID;
+                $http.get("/Area/EmpRewards/AddEmpRewards").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.RewardTypes=angular.fromJson( $("#RewardTypesID").val() );
+                    $("#myModal").modal('show');
+                });
+
+            }
+
+            $scope.AddEmpRewardsEnd = function () {
+                $http.post("/Area/EmpRewards/AddEmpRewardsEnd", $scope.EmpReward).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpRewards();
+                });
+            }
+
+            $scope.EditEmpRewards = function (ID) {
+                $scope.EmpReward={};
+                $http.get("/Area/EmpRewards/EditEmpRewards?ID="+ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpReward = angular.fromJson($("#EmpRewardID").val());
+                    $scope.RewardTypes = angular.fromJson($("#RewardTypesID").val());
+                    $scope.EmpReward.DateAdded = new Date($filter('date')($scope.EmpReward.DateAdded, 'MM/dd/yyyy'));
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpRewardsEnd = function () {
+                $http.post("/Area/EmpRewards/EditEmpRewardsEnd", $scope.EmpReward).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpRewards();
+                });
+
+            }
+
+            $scope.DeleteEmpRewards = function (ID) {
+                $http.get("/Area/EmpRewards/DeleteEmpRewards?ID="+ID).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpRewards();
+                });
+            }
+
+            $scope.getRewardValue = function (ID) {
+                $http.get("/Area/EmpRewards/getRewardValue?ID="+ID).then(function (response) {
+                    $scope.EmpReward.Value = response.data.Value;
+                    $scope.EmpReward.DaysNum = response.data.DaysNum;
+                });
+            }
+
+            //-------------------------EmpPenalty---------------------------//
+
+            $scope.getEmpPenalty = function () {
+                $http.get("/Area/EmpPenalty/getEmpPenalty?ID=" + $scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpPenaltys = angular.fromJson($("#EmpPenaltysID").val());
+                });
+            }
+
+            $scope.AddEmpPenalty = function () {
+                $scope.EmpPenalty = {};
+                $scope.EmpPenalty.EmpID = $scope.Employee.ID;
+                $http.get("/Area/EmpPenalty/AddEmpPenalty").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.PenaltyTypes = angular.fromJson($("#PenaltyTypesID").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+
+            $scope.AddEmpPenaltyEnd = function () {
+
+                $http.post("/Area/EmpPenalty/AddEmpPenaltyEnd", $scope.EmpPenalty).then(function (response) {
+                    $scope.getEmpPenalty();
+                    alert(response.data.msg);
+                });
+            }
+
+            $scope.EditEmpPenalty = function (ID) {
+                $scope.EmpPenalty = {};
+                $scope.EmpPenalty.EmpID = $scope.Employee.ID;
+                $http.get("/Area/EmpPenalty/EditEmpPenalty?ID="+ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.PenaltyTypes = angular.fromJson($("#PenaltyTypesID").val());
+                    $scope.EmpPenalty = angular.fromJson($("#EmpPenaltyID").val());
+                    $scope.EmpPenalty.DateAdded =new Date( $filter('date')($scope.EmpPenalty.DateAdded, 'MM/dd/yyyy') );
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpPenaltyEnd = function () {
+
+                $http.post("/Area/EmpPenalty/EditEmpPenaltyEnd", $scope.EmpPenalty).then(function (response) {
+                    $scope.getEmpPenalty();
+                    alert(response.data.msg);
+                });
+            }
+
+            $scope.DeleteEmpPenalty = function (ID) {
+                $http.get("/Area/EmpPenalty/DeleteEmpPenalty?ID="+ID).then(function (response) {
+                    $scope.getEmpPenalty();
+                    alert(response.data.msg);
+                });
+            }
+
+            $scope.getPenaltyValue = function (ID) {
+
+                $http.get("/Area/EmpPenalty/getPenaltyValue?ID=" + ID).then(function (response) {
+                    $scope.EmpPenalty.Daysnum = response.data.Daysnum;
+                    $scope.EmpPenalty.Value = response.data.Value;
+                });
+
+            }
+
+            //----------------------------EmpAttendance--------------------//
+
+            $scope.getEmpAttendance = function () {
+                $http.get("/Area/EmpAttendance/getEmpAttendance?ID="+$scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpAttendances = angular.fromJson( $("#EmpAttendancesID").val() );
+                });
+            }
+
+            $scope.AddEmpAttendance = function () {
+                $scope.EmpAttendance = {};
+                $scope.EmpAttendance.EmpID = $scope.Employee.ID;
+                $http.get("/Area/EmpAttendance/AddEmpAttendance").then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.AttendanceType = angular.fromJson($("#AttendanceTypeID").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.AddEmpAttendanceEnd = function () {
+
+                $http.post("/Area/EmpAttendance/AddEmpAttendanceEnd", $scope.EmpAttendance).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpAttendance();
+                });
+            }
+
+            $scope.EditEmpAttendance = function (ID) {
+                $scope.EmpAttendance = {};
+                $http.get("/Area/EmpAttendance/EditEmpAttendance?ID=" + ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpAttendance = angular.fromJson($("#EmpAttendanceID").val());
+                    $scope.EmpAttendance.DateAdded = new Date($filter('date')($scope.EmpAttendance.DateAdded, 'MM/dd/yyyy'));
+                    $scope.EmpAttendance.TimeFrom = new Date($filter('date')($scope.EmpAttendance.TimeFrom, 'MM/dd/yyyy hh:mm:ss'));
+                    $scope.EmpAttendance.TimeTo = new Date($filter('date')($scope.EmpAttendance.TimeTo, 'MM/dd/yyyy hh:mm:ss'));
+
+                    $scope.AttendanceType = angular.fromJson($("#AttendanceTypeID").val());
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpAttendanceEnd = function () {
+                $http.post("/Area/EmpAttendance/EditEmpAttendanceEnd", $scope.EmpAttendance).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpAttendance();
+                });
+            }
+
+
+            $scope.DeleteEmpAttendance = function (ID) {
+                $http.get("/Area/EmpAttendance/DeleteEmpAttendance?ID="+ID).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpAttendance();
+                });
+            }
+          
+            //--------------------getEmpAllowance--------------------//
+            $scope.getEmpAllowance = function () {
+
+                $http.get("/Area/EmpAllowance/getEmpAllowance?ID="+$scope.Employee.ID).then(function (response) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(response.data);
+                    $compile($el)($scope);
+                    $scope.EmpAllowances = angular.fromJson($("#EmpAllowances").val());
+                });
+
+            }
+
+            $scope.AddEmpAllowance = function () {
+
+                $http.get("/Area/EmpAllowance/AddEmpAllowance").then(function (response) {
+                    $scope.EmpAllowance = {};
+                    $scope.EmpAllowance.EmpID = $scope.Employee.ID;
+                    $("#myModal").empty();
+                    $el =  $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.AllowanceTypes = angular.fromJson($("#AllowanceTypes").val());
+                    $("#myModal").modal('show');
+                });
+
+            }
+
+
+            $scope.AddEmpAllowanceEnd = function () {
+
+                $http.post("/Area/EmpAllowance/AddEmpAllowanceEnd", $scope.EmpAllowance).then(function (response) {
+                    alert(response.data.msg);
+                   $scope.getEmpAllowance();
+                });
+
+            }
+
+
+            $scope.DeleteEmpAllowance = function (ID) {
+                $http.get("/Area/EmpAllowance/DeleteEmpAllowance?ID="+ID).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpAllowance();
+                });
+
+            }
+
+            $scope.EditEmpAllowance = function (ID) {
+                $scope.EmpAllowance = {};
+                $http.get("/Area/EmpAllowance/EditEmpAllowance?ID="+ID).then(function (response) {
+                    $("#myModal").empty();
+                    $el =  $("#myModal").html(response.data);
+                    $compile($el)($scope);
+                    $scope.AllowanceTypes = angular.fromJson($("#AllowanceTypes").val());
+                    $scope.EmpAllowance = angular.fromJson($("#EmpAllowance").val());
+                    $scope.EmpAllowance.EmpID = $scope.Employee.ID;
+                    $scope.EmpAllowance.DateFrom = new Date($filter('date')($scope.EmpAllowance.DateFrom, 'MM/dd/yyyy'));
+                    $scope.EmpAllowance.DateTo = new Date($filter('date')($scope.EmpAllowance.DateTo, 'MM/dd/yyyy'));
+                    $("#myModal").modal('show');
+                });
+            }
+            $scope.EditEmpAllowanceEnd = function () {
+
+                $http.post("/Area/EmpAllowance/EditEmpAllowanceEnd", $scope.EmpAllowance).then(function (response) {
+                    alert(response.data.msg);
+                    $scope.getEmpAllowance();
+                });
+
+            }
+
+            $scope.getAllowanceValue = function (ID) {
+
+                $http.get("/Area/EmpAllowance/getAllowanceValue?ID="+ID).then(function (response) {
+                    $scope.EmpAllowance.Value = response.data.Value;
+                });
+
+            }
+            //--------------------------EmpLeaveEarly------------------------//
+            
+            $scope.getEmpLeaveEarly = function () {
+
+                $http.get("/Area/EmpLeaveEarly/getEmpLeaveEarly?EmpID="+$scope.Employee.ID).then(function (res) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(res.data);
+                    $compile($el)($scope);
+                    $scope.EmpLeaveEarlys = angular.fromJson($("#EmpLeaveEarlys").val());
+                });
+            }
+
+            $scope.AddEmpLeaveEarly = function () {
+                $scope.EmpLeaveEarly = {};
+                $http.get("/Area/EmpLeaveEarly/AddEmpLeaveEarly").then(function (res) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(res.data);
+                    $compile($el)($scope);
+                    $("#myModal").modal('show');
+                });
+            }
+
+
+            $scope.AddEmpLeaveEarlyEnd = function () {
+                $scope.EmpLeaveEarly.EmpID = $scope.Employee.ID;
+                $http.post("/Area/EmpLeaveEarly/AddEmpLeaveEarlyEnd", $scope.EmpLeaveEarly).then(function (res) {
+                    $scope.EmpLeaveEarlys =angular.fromJson( res.data.result);
+                    alert(res.data.msg);
+                });
+            }
+
+            $scope.EditEmpLeaveEarly = function (ID) {
+                $scope.EmpLeaveEarly = {};
+              
+                $http.get("/Area/EmpLeaveEarly/EditEmpLeaveEarly?ID="+ID).then(function (res) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(res.data);
+                    $compile($el)($scope);
+                    $scope.EmpLeaveEarly = angular.fromJson($("#EmpLeaveEarlyID").val());
+                    $scope.EmpLeaveEarly.DateDay =new Date( $filter('date')($scope.EmpLeaveEarly.DateDay, 'MM/dd/yyyy'));
+                    $scope.EmpLeaveEarly.FromTime = new Date($filter('date')($scope.EmpLeaveEarly.FromTime, 'MM/dd/yyyy hh:mm'));
+                    $scope.EmpLeaveEarly.ToTime = new Date($filter('date')($scope.EmpLeaveEarly.ToTime, 'MM/dd/yyyy hh:mm'));
+
+                    $("#myModal").modal('show');
+                });
+            }
+
+            $scope.EditEmpLeaveEarlyEnd = function () {
+                $scope.EmpLeaveEarly.EmpID = $scope.Employee.ID;
+          
+                $http.post("/Area/EmpLeaveEarly/EditEmpLeaveEarlyEnd", $scope.EmpLeaveEarly).then(function (res) {
+                    $scope.EmpLeaveEarlys = angular.fromJson(res.data.result);
+                    alert(res.data.msg);
+                });
+            }
+
+            $scope.DeleteEmpLeaveEarly = function (ID) {
+                $http.get("/Area/EmpLeaveEarly/DeleteEmpLeaveEarly?ID="+ID).then(function (res) {
+                    $scope.EmpLeaveEarlys = angular.fromJson(res.data.result);
+                    alert(res.data.msg);
+                });
+            }
+
+            //---------------------------EmpBorrow-----------------------------//
+
+            $scope.DeleteEmpBorrow = function (ID) {
+                $http.get("/Area/EmpBorrow/DeleteEmpBorrow?ID=" + ID).then(function (res) {
+                    $scope.EmpBorrows = angular.fromJson(res.data.result);
+                    alert(res.data.msg);
+                });
+            }
+            $scope.getEmpBorrow = function () {
+                $http.get("/Area/EmpBorrow/getEmpBorrow?EmpID=" + $scope.Employee.ID).then(function (res) {
+                    $("#Empdetails").empty();
+                    $el = $("#Empdetails").html(res.data);
+                    $compile($el)($scope);
+                    $scope.EmpBorrows = angular.fromJson($("#EmpBorrowsID").val());
+                });
+            }
+            $scope.AddEmpBorrow = function () {
+                $scope.EmpBorrow = {};
+                $http.get("/Area/EmpBorrow/AddEmpBorrow").then(function (res) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(res.data);
+                    $compile($el)($scope);
+                    $("#myModal").modal('show');
+                });
+            }
+            $scope.AddEmpBorrowEnd = function () {
+                $scope.EmpBorrow.EmpID = $scope.Employee.ID;
+                $http.post("/Area/EmpBorrow/AddEmpBorrowEnd", $scope.EmpBorrow).then(function (res) {
+                    $scope.EmpBorrows = angular.fromJson(res.data.result);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 })
+                });
+            }
+
+            $scope.EditEmpBorrow = function (ID) {
+                $scope.EmpBorrow = {};
+                $http.get("/Area/EmpBorrow/EditEmpBorrow?ID="+ID).then(function (res) {
+                    $("#myModal").empty();
+                    $el = $("#myModal").html(res.data);
+                    $compile($el)($scope);
+                    $scope.EmpBorrow = angular.fromJson($("#EmpBorrowID").val());
+                    $scope.EmpBorrow.Dateorder = new Date($filter('date')($scope.EmpBorrow.Dateorder, 'MM/dd/yyyy'));
+                    $scope.EmpBorrow.payoffDate = new Date($filter('date')($scope.EmpBorrow.payoffDate, 'MM/dd/yyyy'));
+                    $("#myModal").modal('show');
+                });
+            }
+            $scope.EditEmpBorrowEnd = function () {
+                $scope.EmpBorrow.EmpID = $scope.Employee.ID;
+                $http.post("/Area/EmpBorrow/EditEmpBorrowEnd", $scope.EmpBorrow).then(function (res) {
+                    $scope.EmpBorrows = angular.fromJson(res.data.result);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 })
+                });
+            }
+
+
+            //--------------------auto Complete-----------------------------//
+            var availableTags = [];
+            $http.get("/Area/Employee/getAllEmployee").then(function (response) {
+                var s = angular.fromJson(response.data);
+                s.forEach(function (x) {
+                    availableTags.push(x.Name);
+                });
+            });
+
+            $("#gg").autocomplete({
+                source: availableTags
+            });
+            $("#accordion").accordion();
+            //----------------------------------------------------------------//
+
+        });
+
+
+    </script>
+
+
+

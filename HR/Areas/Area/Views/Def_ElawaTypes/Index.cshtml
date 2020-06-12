@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="Def_ElawaTypes" style="padding:20px;">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+        <div class="panel-title text-center">
+       <strong> بيانات العلاوات </strong> 
+        </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="col-md-2 btn btn-danger" ng-click="AddDef_ElawaTypes()">اضافة علاوة</label>
+                </div>
+            </div>
+            <br />
+
+            <div id="Content">
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+ var app=angular.module("Hr", []);
+ app.controller("Def_ElawaTypes", function ($scope, $http, $filter, $compile, $window) {
+     putMenu();
+     $scope.$watch(function () {
+         $('.selectpicker').selectpicker('refresh');
+     });
+
+     $scope.ElawaTypes = {};
+     
+     $scope.getDef_ElawaTypes = function () {
+         $http.get("/Area/Def_ElawaTypes/getDef_ElawaTypes").then(function (response) {
+             $("#Content").empty();
+             $el=$("#Content").html(response.data);
+             $compile($el)($scope);
+             $scope.ElawaTypes = angular.fromJson($("#ElawaTypesID").val());
+         });
+     }
+
+     $scope.getDef_ElawaTypes();
+
+     //------------------------------------------------------//
+
+     $scope.AddDef_ElawaTypes = function () {
+         $scope.ElawaType = {};
+         $http.get("/Area/Def_ElawaTypes/AddDef_ElawaTypes").then(function (response) {
+             $("#myModal").empty();
+             $el=$("#myModal").html(response.data);
+             $compile($el)($scope);
+             $("#myModal").modal('show');
+         });
+     }
+
+
+     $scope.AddDef_ElawaTypesEnd = function () {
+         $http.post("/Area/Def_ElawaTypes/AddDef_ElawaTypesEnd", $scope.ElawaType).then(function (response) {
+             alert(response.data.msg);
+             $scope.getDef_ElawaTypes();
+         });
+
+     }
+
+     $scope.DeleteDef_ElawaType = function (ID) {
+         $http.get("/Area/Def_ElawaTypes/DeleteDef_ElawaType?ID=" + ID).then(function (response) {
+             alert(response.data.msg);
+             $scope.getDef_ElawaTypes();
+         });
+     }
+
+     
+
+     $scope.EditDef_ElawaTypes = function (ID) {
+         $scope.ElawaType = {};
+
+         $http.get("/Area/Def_ElawaTypes/EditDef_ElawaTypes?ID="+ID).then(function (response) {
+             $("#myModal").empty();
+             $el = $("#myModal").html(response.data);
+             $compile($el)($scope);
+             $scope.ElawaType = angular.fromJson($("#Def_ElawaTypevalueID").val());
+             $scope.ElawaType.DateAdded = new Date( $filter('date')($scope.ElawaType.DateAdded, "MM/dd/yyyy") );
+             $("#myModal").modal('show');
+         });
+     }
+
+     $scope.EditDef_ElawaTypesEnd = function () {
+         $http.post("/Area/Def_ElawaTypes/EditDef_ElawaTypesEnd", $scope.ElawaType).then(function (response) {
+             alert(response.data.msg);
+             $scope.getDef_ElawaTypes();
+         });
+     }
+
+ });
+</script>
+
+
+

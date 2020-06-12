@@ -1,0 +1,108 @@
+﻿@using HR.Models;
+@using Newtonsoft.Json;
+@{ Layout = null;}
+<style>
+
+    .submain,.subsubmain{
+        display:none;
+    }
+    .main ul{
+        display:inline-flex;
+        list-style:none;
+    }
+    .main ul li{
+        margin-right:20px;
+        padding-right:30px;
+        padding-top:15px;
+        font-size:20px;
+    }
+
+    .main ul li:hover .submain{
+        display:block;
+        position:absolute;
+        background-color:white;
+
+    }
+    
+    .main ul li:hover .submain ul{
+        display:block;
+        position:absolute;
+        background-color:#EEEEEE;
+        border-radius:10px;
+    }
+    .main ul li:hover .submain ul li{
+     width:200px;
+     padding:10px;
+     margin-right:-10px;
+     border-bottom:1px dotted #000;
+          color:white;
+
+    }
+
+     .submain ul li:hover .subsubmain{
+        display:block;
+        position:absolute;
+    }
+     .submain ul li:hover .subsubmain ul{
+        display:block;
+        position:absolute;
+        margin-right:140px;
+        border-radius:10px;
+    }
+     .submain ul li:hover .subsubmain ul li{
+     width:200px;
+     padding:10px;
+     margin-right:-10px;
+     border-bottom:1px dotted #000;
+    }
+
+      .submain ul li a,.subsubmain ul li a{
+          text-decoration:none;
+          color:black;
+      }
+
+      .submain ul li:hover  {
+          background-color:#808080;
+      }
+
+</style>
+
+
+    @{
+        <div class="main">
+            <ul>
+
+                @foreach (var x in @JsonConvert.DeserializeObject(ViewBag.menu))
+            {
+                    <li>
+                        <strong style="color:white;"> @x.Name  </strong>
+                        <div class="submain">
+                            <ul>
+                                @foreach (var xx in JsonConvert.DeserializeObject(ViewBag.SubMenu))
+                {
+                    if (xx.MenuID == x.ID)
+                    {
+                                        <li>
+                                            <a href="/@xx.AreaName/@xx.ControllerName/@xx.PageName">@xx.Name</a>
+                                            <div class="subsubmain">
+                                                <ul>
+                                                    @foreach (var xxx in JsonConvert.DeserializeObject(ViewBag.SubSubMenu))
+                                                    {
+                                                        if (xxx.MenuID == xx.ID)
+                                                        {
+                                                            <li><a href="/@xxx.AreaName/@xxx.ControllerName/@xxx.PageName"> @xxx.Name</a></li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    }

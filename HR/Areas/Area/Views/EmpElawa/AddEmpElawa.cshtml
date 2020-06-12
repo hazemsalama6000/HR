@@ -1,0 +1,43 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div class="modal-title"> اضافة علاوة </div>
+        </div>
+        <input type="hidden" id="ElawaTypesID" value="@ViewBag.ElawaTypes" />
+        <div class="modal-body">
+            <div class="row">
+                <form class="form-horizontal">
+
+                    <div class="row">
+                        <label class="control-label col-md-2"> تاريخ </label>
+                        <input type="date" class="col-md-8 form-control" ng-model="EmpElawa.DateAdded" />
+                    </div>
+                    <div class="row">
+                        <br />
+                        <label class="control-label col-md-2"> العلاوة </label>
+                        <select data-live-search="true" class="form-control selectpicker col-md-8" ng-options="x.ID as x.Name for x in ElawaTypes" ng-change="getElawaTypeData()" ng-model="EmpElawa.ElawaID" ></select>
+                    </div>
+
+                    <div class="row">
+                        <br />
+                        <label class="control-label col-md-2"> نسبة من الاساسي </label>
+                        <input type="text" class="form-control col-md-3" ng-disabled="EmpElawa.Value" ng-model="EmpElawa.SalaryPercent" />
+                        <label class="control-label col-md-2"> القيمة </label>
+                        <input type="text" class="col-md-3 form-control" ng-disabled="EmpElawa.SalaryPercent"  ng-model="EmpElawa.Value" />
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddEmpElawaEnd()"> حفظ </label>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title"><strong>اضافة عمل مسند</strong></div>
+        </div>
+        
+        <input type="hidden" value="@ViewBag.jobs" id="jobViewbag"/>
+
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form class="form-horizontal">
+                      <input type="hidden" ng-model="EmpJobs.ID"/>
+                      <div class="row">
+                          <label class="col-md-2">العمل المسند</label>
+                          <select  data-live-search="true" class="form-control selectpicker col-md-10" ng-options="x.ID as x.Name for x in JobsNames" ng-model="EmpJobs.JobID"></select>                          
+                      </div>
+                        @*<br />*@
+
+                        @*<div class="row">
+                            <label class="col-md-2"> وظيفة اساسية </label>
+                            <input type="checkbox" class="col-md-2" ng-value="true" ng-model="EmpJobs.MasterJobFlag" />
+                        </div>*@
+
+                        <br />
+                      <div class="row">
+                           <label class="col-md-2">من</label>
+                           <input type="date" class="form-control col-md-4" ng-model="EmpJobs.fromDate" />
+                          <span>
+                              <label class="col-md-2">الي</label>
+                              <input type="date" class="form-control col-md-4" ng-model="EmpJobs.toDate" />
+                          </span>
+                      </div>
+                        <br />
+
+                        
+
+                      <div class="row">
+                          <label class="col-md-2">ملاحظات</label>
+                          <textarea ng-model="EmpJobs.Note" class="form-control col-md-4">
+                          </textarea>
+
+                      </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-primary" ng-click="AddEmpJobsEnd()">Save</label>
+        </div>
+
+    </div>
+
+</div>

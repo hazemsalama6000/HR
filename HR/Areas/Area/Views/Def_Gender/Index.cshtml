@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin:auto 0px">
+    <div class="col-md-12">
+
+        <input type="hidden" id="Def_GenderViewBag" value="@ViewBag.Def_GenderViewBag" />
+
+
+        <div  ng-controller="Def_GenderController">
+
+            <div class="panel panel-default">
+
+                <div class="panel panel-heading">
+                    <div class="panel-title text-center" ><strong>تعريف  النوع  </strong> </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="btn btn-danger col-md-3" ng-click="AddDef_Gender()"> تعريف النوع </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-bordered table-hover table-responsive table-striped">
+                                <tr>
+                                    <th class="text-center">النوع</th>
+                                </tr>
+
+                                <tr ng-repeat="x in Def_Genders">
+                                    <td>{{x.Name}} </td>
+                                    <td>
+                                        <label class="btn btn-success" ng-click="EditDef_Gender(x.ID)"> تعديل </label>
+                                        <label class="btn btn-danger" ng-click="DeleteDef_Gender(x.ID)"> حذف </label>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+
+    var app = angular.module("Hr", []);
+    app.controller("Def_GenderController", function ($scope, $http,$compile, $filter) {
+
+        $scope.Def_Genders = angular.fromJson($("#Def_GenderViewBag").val());
+
+        $scope.DeleteDef_Gender = function (ID) {
+            $http.get("/Area/Def_Gender/DeleteDef_Gender?ID="+ID).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Genders = angular.fromJson(res.data.Def_GenderList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.AddDef_Gender = function () {
+            $scope.Def_Gender = {};
+            $http.get("/Area/Def_Gender/AddDef_Gender").then(function (res) {
+                $("#myModal").empty();
+                $el =  $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddDef_GenderEnd = function () {
+
+            $http.post("/Area/Def_Gender/AddDef_GenderEnd", $scope.Def_Gender).then(function (res) {
+                if(res.data.action=="yes"){
+                    $scope.Def_Genders = angular.fromJson(res.data.Def_GenderList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.EditDef_Gender = function (ID) {
+            $scope.Def_Gender = {};
+            $http.get("/Area/Def_Gender/EditDef_Gender?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.Def_Gender = angular.fromJson($("#Def_GenderBag").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditDef_GenderEnd = function () {
+
+            $http.post("/Area/Def_Gender/EditDef_GenderEnd", $scope.Def_Gender).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Genders = angular.fromJson(res.data.Def_GenderList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

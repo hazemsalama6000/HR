@@ -1,0 +1,44 @@
+﻿@{ Layout = null;}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <input type="hidden" value="@ViewBag.QualificationTypes" id="QualificationviewBag"/>
+        <div class="modal-header"></div>
+
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <input type="hidden"  ng-model="EmpQualification.EmpID"/>
+                <div class="row">
+                    <label class="col-md-2">المؤهل</label>
+                    <div class="col-md-4">
+                        <select data-live-search="true" ng-options="x.ID as x.Name for x in QualificationTypes" class="form-control selectpicker" ng-model="EmpQualification.QualID"></select>
+                    </div>
+
+                    <label class="col-md-2">جامعه - معهد</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" ng-model="EmpQualification.University" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <label class="col-md-2">من تاريخ</label>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" ng-model="EmpQualification.fromDate" />
+                    </div>
+
+                    <label class="col-md-2">الي تاريخ</label>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" ng-model="EmpQualification.toDate" />
+                    </div>
+                </div>
+
+            </form>
+        
+        </div>
+
+        <div class="modal-footer">
+            <label class="btn btn-success" ng-click="EditEmpQualEnd()">Save</label>
+        </div>
+
+    </div>
+</div>

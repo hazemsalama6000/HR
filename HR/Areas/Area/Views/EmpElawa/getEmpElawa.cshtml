@@ -1,0 +1,36 @@
+﻿
+@{ 
+    Layout = null;
+}
+
+<input type="hidden" id="EmpElawaID" value="@ViewBag.EmpElawas"/>
+<div class="row">
+    <label class="btn btn-danger col-md-3" ng-click="AddEmpElawa()"><strong> اضافة العلاوة </strong><span class="glyphicon glyphicon-plus"></span></label>
+</div>
+<hr />
+<div class="row">
+
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>تاريخ</th>
+            <th>الاسم</th>
+            <th>نسبة من الاساسي</th>
+            <th>القيمة</th>
+        </tr>
+
+        <tr ng-repeat="x in EmpElawas">
+            <td>{{x.DateAdded|date:'yyyy-MM-dd'}}</td>
+            <td>{{x.Name}}</td>
+            <td>{{x.SalaryPercent}}</td>
+            <td>{{x.Value}}</td>
+            <td>
+                <label class="btn btn-primary" ng-click="EditEmpElawa(x.ID)"> تعديل </label>
+                <label class="btn btn-danger" ng-click="DeleteEmpElawa(x.ID)"> حذف </label>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+

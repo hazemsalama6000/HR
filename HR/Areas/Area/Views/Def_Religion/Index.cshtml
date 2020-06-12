@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin:auto 0px">
+    <div class="col-md-12">
+
+        <input type="hidden" id="Def_ReligionViewBag" value="@ViewBag.Def_ReligionViewBag" />
+
+
+        <div  ng-controller="Def_ReligionController">
+
+            <div class="panel panel-default">
+
+                <div class="panel panel-heading">
+                    <div class="panel-title text-center" ><strong>تعريف الديانة  </strong> </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="btn btn-danger col-md-3" ng-click="AddDef_Religion()"> تعريف الديانة </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-bordered table-hover table-responsive table-striped">
+                                <tr>
+                                    <th class="text-center">الديانة</th>
+                                </tr>
+
+                                <tr ng-repeat="x in Def_Religions">
+                                    <td>{{x.Name}} </td>
+                                    <td>
+                                        <label class="btn btn-success" ng-click="EditDef_Religion(x.ID)"> تعديل </label>
+                                        <label class="btn btn-danger" ng-click="DeleteDef_Religion(x.ID)"> حذف </label>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+
+    var app = angular.module("Hr", []);
+    app.controller("Def_ReligionController", function ($scope, $http,$compile, $filter) {
+
+        $scope.Def_Religions = angular.fromJson($("#Def_ReligionViewBag").val());
+
+        $scope.DeleteDef_Religion = function (ID) {
+            $http.get("/Area/Def_Religion/DeleteDef_Religion?ID="+ID).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Religions = angular.fromJson(res.data.Def_ReligionList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.AddDef_Religion = function () {
+            $scope.Def_Religion = {};
+            $http.get("/Area/Def_Religion/AddDef_Religion").then(function (res) {
+                $("#myModal").empty();
+                $el =  $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.AddDef_ReligionEnd = function () {
+
+            $http.post("/Area/Def_Religion/AddDef_ReligionEnd", $scope.Def_Religion).then(function (res) {
+                if(res.data.action=="yes"){
+                    $scope.Def_Religions = angular.fromJson(res.data.Def_ReligionList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+        $scope.EditDef_Religion = function (ID) {
+            $scope.Def_Religion = {};
+            $http.get("/Area/Def_Religion/EditDef_Religion?ID="+ID).then(function (res) {
+                $("#myModal").empty();
+                $el = $("#myModal").html(res.data);
+                $compile($el)($scope);
+                $scope.Def_Religion = angular.fromJson($("#Def_ReligionBag").val());
+                $("#myModal").modal('show');
+            });
+        }
+
+        $scope.EditDef_ReligionEnd = function () {
+
+            $http.post("/Area/Def_Religion/EditDef_ReligionEnd", $scope.Def_Religion).then(function (res) {
+                if (res.data.action == "yes") {
+                    $scope.Def_Religions = angular.fromJson(res.data.Def_ReligionList);
+                    toastr.success(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+                else {
+                    toastr.error(res.data.msg, 'Information', { timeOut: 5000 });
+                }
+            });
+        }
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

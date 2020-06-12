@@ -1,0 +1,88 @@
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\csc.exe
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\vbc.exe
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\VBCSCompiler.exe
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\HR.dll.config
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\HR.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\HR.pdb
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Antlr3.Runtime.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Newtonsoft.Json.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Helpers.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Mvc.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Optimization.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Razor.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.Deployment.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.Razor.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\WebGrease.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Helpers.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Mvc.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Optimization.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.Razor.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.Deployment.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\System.Web.WebPages.Razor.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Antlr3.Runtime.pdb
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\Newtonsoft.Json.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\obj\Debug\HR.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\obj\Debug\HR.pdb
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\obj\Debug\HR.csprojResolveAssemblyReference.cache
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\EntityFramework.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\EntityFramework.SqlServer.dll
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\EntityFramework.xml
+C:\Users\future world\Documents\Visual Studio 2015\Projects\HR\HR\bin\EntityFramework.SqlServer.xml
+E:\شغل\projects\HR\HR\bin\roslyn\csc.exe
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\شغل\projects\HR\HR\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\شغل\projects\HR\HR\bin\roslyn\System.Collections.Immutable.dll
+E:\شغل\projects\HR\HR\bin\roslyn\System.Reflection.Metadata.dll
+E:\شغل\projects\HR\HR\bin\roslyn\vbc.exe
+E:\شغل\projects\HR\HR\bin\roslyn\VBCSCompiler.exe
+E:\شغل\projects\HR\HR\bin\roslyn\VBCSCompiler.exe.config
+E:\شغل\projects\HR\HR\bin\HR.dll.config
+E:\شغل\projects\HR\HR\bin\HR.dll
+E:\شغل\projects\HR\HR\bin\HR.pdb
+E:\شغل\projects\HR\HR\bin\Antlr3.Runtime.dll
+E:\شغل\projects\HR\HR\bin\EntityFramework.dll
+E:\شغل\projects\HR\HR\bin\EntityFramework.SqlServer.dll
+E:\شغل\projects\HR\HR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\شغل\projects\HR\HR\bin\Microsoft.Web.Infrastructure.dll
+E:\شغل\projects\HR\HR\bin\Newtonsoft.Json.dll
+E:\شغل\projects\HR\HR\bin\System.Web.Helpers.dll
+E:\شغل\projects\HR\HR\bin\System.Web.Mvc.dll
+E:\شغل\projects\HR\HR\bin\System.Web.Optimization.dll
+E:\شغل\projects\HR\HR\bin\System.Web.Razor.dll
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.Deployment.dll
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.dll
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.Razor.dll
+E:\شغل\projects\HR\HR\bin\WebGrease.dll
+E:\شغل\projects\HR\HR\bin\EntityFramework.xml
+E:\شغل\projects\HR\HR\bin\EntityFramework.SqlServer.xml
+E:\شغل\projects\HR\HR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\شغل\projects\HR\HR\bin\System.Web.Helpers.xml
+E:\شغل\projects\HR\HR\bin\System.Web.Mvc.xml
+E:\شغل\projects\HR\HR\bin\System.Web.Optimization.xml
+E:\شغل\projects\HR\HR\bin\System.Web.Razor.xml
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.xml
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.Deployment.xml
+E:\شغل\projects\HR\HR\bin\System.Web.WebPages.Razor.xml
+E:\شغل\projects\HR\HR\bin\Antlr3.Runtime.pdb
+E:\شغل\projects\HR\HR\bin\Newtonsoft.Json.xml
+E:\شغل\projects\HR\HR\obj\Debug\HR.dll
+E:\شغل\projects\HR\HR\obj\Debug\HR.pdb
+E:\شغل\projects\HR\HR\obj\Debug\HR.csprojResolveAssemblyReference.cache

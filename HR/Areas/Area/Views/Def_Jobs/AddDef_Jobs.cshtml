@@ -1,0 +1,35 @@
+﻿@{ Layout = null;}
+
+
+<div class="modal-dialog">
+
+    <div class="modal-content">
+        
+        <div class="modal-header">
+            <div class="modal-title">
+              <strong> تعريف وظيفة</strong>     
+            </div>
+        </div>
+
+
+        <div class="modal-body">
+            <div class="row">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="col-md-2 control-label"> الوظيفة </label>
+                            <input type="text" class="form-control col-md-4" ng-model="Def_Job.Name" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+            <label class="btn btn-danger" ng-click="AddDef_JobsEnd()"> حفظ </label>
+        </div>
+
+    </div>
+
+</div>
